@@ -12,7 +12,7 @@ class CoursesApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-      locale: Locale("Ar"),
+      locale: Locale('ar'),
       debugShowCheckedModeBanner: false,
       onGenerateRoute: RouteGenerator.getRoute,
       initialRoute: Routes.mainRoute,

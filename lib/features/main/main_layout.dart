@@ -29,22 +29,25 @@ class _MainLayoutState extends State<MainLayout> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: tabs[currentIndex],
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: currentIndex,
-        onTap: changeSelectedIndex,
-        type: BottomNavigationBarType.fixed,
-        selectedItemColor: ColorManager.white,
-        unselectedItemColor: ColorManager.black700,
-        showSelectedLabels: false,
-        showUnselectedLabels: false,
-        items: [
-          CustomBottomNavBarItem(IconsAssets.icHome, "Home"),
-          CustomBottomNavBarItem(IconsAssets.icCourses, "Courses"),
-          CustomBottomNavBarItem(IconsAssets.icFathers, "Fathers"),
-          CustomBottomNavBarItem(IconsAssets.icCommunity, "Community"),
-          CustomBottomNavBarItem(IconsAssets.settingIcon, "Settings"),
+      bottomNavigationBar: SizedBox(
 
-        ],
+        child: BottomNavigationBar(
+          currentIndex: currentIndex,
+          onTap: changeSelectedIndex,
+          type: BottomNavigationBarType.shifting,
+          selectedItemColor: ColorManager.white,
+          unselectedItemColor: ColorManager.black700,
+          showSelectedLabels: true,
+          showUnselectedLabels: false,
+          items: [
+            CustomBottomNavBarItem(IconsAssets.icHome, "Home"),
+            CustomBottomNavBarItem(IconsAssets.icCourses, "Courses"),
+            CustomBottomNavBarItem(IconsAssets.icFathers, "Fathers"),
+            CustomBottomNavBarItem(IconsAssets.icCommunity, "Community"),
+            CustomBottomNavBarItem(IconsAssets.settingIcon, "Settings"),
+
+          ],
+        ),
       ),
     );
   }
@@ -68,7 +71,7 @@ class CustomBottomNavBarItem extends BottomNavigationBarItem {
        // Inactive icon color
     ),
     activeIcon: CircleAvatar(
-      radius: 30,
+      radius: 25,
       backgroundColor: ColorManager.primary700, // Background of active icon
       child: ImageIcon(
         AssetImage(iconPath), // Active icon imageColor: ColorManager.primary, // Active icon color
