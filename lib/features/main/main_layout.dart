@@ -25,6 +25,38 @@ class _MainLayoutState extends State<MainLayout> {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold();
+    return Scaffold(
+      body: tabs[currentIndex],
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: currentIndex,
+        onTap: changeSelectedIndex,
+        items: [],
+      ),
+    );
   }
+
+  void changeSelectedIndex(selectedIndex) {
+    setState(() {
+      currentIndex = selectedIndex;
+    });
+  }
+}
+
+class CustomBottomNavBarItem extends BottomNavigationBarItem {
+  String iconPath;
+  String title;
+  CustomBottomNavBarItem(this.iconPath, this.title)
+      : super(
+    label: title,
+    icon: ImageIcon(
+      AssetImage(iconPath), // Inactive icon image
+      color: Colors.white, // Inactive icon color
+    ),
+    activeIcon: CircleAvatar(
+      backgroundColor: Colors.white, // Background of active icon
+      child: ImageIcon(
+        AssetImage(iconPath), // Active icon imagecolor: ColorManager.primary, // Active icon color
+      ),
+    ),
+  );
 }
