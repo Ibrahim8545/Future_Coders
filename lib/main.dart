@@ -1,3 +1,6 @@
+import 'package:courseapp/config/routes/route_generator.dart';
+import 'package:courseapp/config/routes/routes.dart';
+import 'package:courseapp/features/main/main_layout.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -11,6 +14,8 @@ class CoursesApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
+      onGenerateRoute: RouteGenerator.getRoute,
+      initialRoute: Routes.mainRoute,
     );
   }
 }
