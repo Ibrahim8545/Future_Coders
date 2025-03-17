@@ -2,6 +2,8 @@ import 'package:courseapp/features/main/community/community_tab.dart';
 import 'package:courseapp/features/main/cources/courses_tab.dart';
 import 'package:courseapp/features/main/fathers/fathers_tab.dart';
 import 'package:courseapp/features/main/settings/settings_tab.dart';
+import 'package:courseapp/utils/assets_manager.dart';
+import 'package:courseapp/utils/color_manager.dart';
 import 'package:flutter/material.dart';
 
 import 'home/home_tab.dart';
@@ -30,7 +32,19 @@ class _MainLayoutState extends State<MainLayout> {
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: currentIndex,
         onTap: changeSelectedIndex,
-        items: [],
+        type: BottomNavigationBarType.fixed,
+        selectedItemColor: ColorManager.white,
+        unselectedItemColor: ColorManager.black700,
+        showSelectedLabels: false,
+        showUnselectedLabels: false,
+        items: [
+          CustomBottomNavBarItem(IconsAssets.icHome, "Home"),
+          CustomBottomNavBarItem(IconsAssets.icCourses, "Courses"),
+          CustomBottomNavBarItem(IconsAssets.icFathers, "Fathers"),
+          CustomBottomNavBarItem(IconsAssets.icCommunity, "Community"),
+          CustomBottomNavBarItem(IconsAssets.settingIcon, "Settings"),
+
+        ],
       ),
     );
   }
@@ -49,13 +63,15 @@ class CustomBottomNavBarItem extends BottomNavigationBarItem {
       : super(
     label: title,
     icon: ImageIcon(
+      size: 30,
       AssetImage(iconPath), // Inactive icon image
-      color: Colors.white, // Inactive icon color
+       // Inactive icon color
     ),
     activeIcon: CircleAvatar(
-      backgroundColor: Colors.white, // Background of active icon
+      radius: 30,
+      backgroundColor: ColorManager.primary700, // Background of active icon
       child: ImageIcon(
-        AssetImage(iconPath), // Active icon imagecolor: ColorManager.primary, // Active icon color
+        AssetImage(iconPath), // Active icon imageColor: ColorManager.primary, // Active icon color
       ),
     ),
   );
