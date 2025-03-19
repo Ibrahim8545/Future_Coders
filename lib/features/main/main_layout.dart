@@ -16,7 +16,7 @@ class MainLayout extends StatefulWidget {
 }
 
 class _MainLayoutState extends State<MainLayout> {
-  int currentIndex = 0;
+  int currentIndex = 4;
   List<Widget> tabs = [
     const HomeTab(),
     const CoursesTab(),
@@ -29,25 +29,25 @@ class _MainLayoutState extends State<MainLayout> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: tabs[currentIndex],
-      bottomNavigationBar: SizedBox(
-
-        child: BottomNavigationBar(
-          currentIndex: currentIndex,
-          onTap: changeSelectedIndex,
-          type: BottomNavigationBarType.shifting,
-          selectedItemColor: ColorManager.white,
-          unselectedItemColor: ColorManager.black700,
-          showSelectedLabels: true,
-          showUnselectedLabels: false,
-          items: [
-            CustomBottomNavBarItem(IconsAssets.icHome, "Home"),
-            CustomBottomNavBarItem(IconsAssets.icCourses, "Courses"),
-            CustomBottomNavBarItem(IconsAssets.icFathers, "Fathers"),
-            CustomBottomNavBarItem(IconsAssets.icCommunity, "Community"),
-            CustomBottomNavBarItem(IconsAssets.settingIcon, "Settings"),
-
-          ],
+      bottomNavigationBar: BottomNavigationBar(
+        selectedLabelStyle: TextStyle(
+          color: ColorManager.primary700
         ),
+        currentIndex: currentIndex,
+        onTap: changeSelectedIndex,
+        type: BottomNavigationBarType.fixed,
+        unselectedItemColor: ColorManager.black700,
+        showSelectedLabels: true,
+        showUnselectedLabels: false,
+        elevation: 10,
+        items: [
+          CustomBottomNavBarItem(IconsAssets.icHome, "Home",),
+          CustomBottomNavBarItem(IconsAssets.icCourses, "Courses"),
+          CustomBottomNavBarItem(IconsAssets.icFathers, "Fathers"),
+          CustomBottomNavBarItem(IconsAssets.icCommunity, "Community"),
+          CustomBottomNavBarItem(IconsAssets.settingIcon, "Settings"),
+
+        ],
       ),
     );
   }
@@ -62,16 +62,16 @@ class _MainLayoutState extends State<MainLayout> {
 class CustomBottomNavBarItem extends BottomNavigationBarItem {
   String iconPath;
   String title;
-  CustomBottomNavBarItem(this.iconPath, this.title)
+  CustomBottomNavBarItem(this.iconPath, this.title,)
       : super(
     label: title,
     icon: ImageIcon(
-      size: 30,
+      size: 35,
       AssetImage(iconPath), // Inactive icon image
        // Inactive icon color
     ),
     activeIcon: CircleAvatar(
-      radius: 25,
+      radius: 30,
       backgroundColor: ColorManager.primary700, // Background of active icon
       child: ImageIcon(
         AssetImage(iconPath), // Active icon imageColor: ColorManager.primary, // Active icon color
