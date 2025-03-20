@@ -1,6 +1,8 @@
+import 'package:courseapp/features/auth/prestation/screens/signup_screen.dart';
 import 'package:courseapp/features/auth/prestation/widget/custom_buttom.dart';
 import 'package:courseapp/features/auth/prestation/widget/custom_textfield.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class LoginPage extends StatelessWidget {
   static const String routeName = 'LoginPage';
@@ -26,37 +28,52 @@ class LoginPage extends StatelessWidget {
               const SizedBox(height: 20),
               CustomTextField(
                 controller: emailController,
-                hint: 'تدخل بريدك الالكتروني',
+                hint: 'ادخل بريدك الالكتروني',
                 text: 'Email must be not empty',
               ),
-              const SizedBox(height: 10),
+              SizedBox(height: 10.h),
               CustomTextField(
                 controller: passwordController,
-                hint: 'Password',
+                hint: 'ادخل كلمه المرور',
                 text: 'Password must be not empty',
                 obscureText: false,
               ),
-              const SizedBox(height: 20),
+              SizedBox(height: 10.h),
+              const Text(
+                'هل نسيت كلمه السر؟',
+                textAlign: TextAlign.end,
+                style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
+              ),
+              SizedBox(height: 10.h),
               CustomButton(
                 onTap: () {
                   if (formKey.currentState!.validate()) {}
                 },
-                text: 'Login',
+                text: 'تسجيل الدخول ',
               ),
-              const SizedBox(height: 10),
+              SizedBox(height: 10.h),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text(
-                    'don\'t have an account ?',
-                  ),
-                  const SizedBox(width: 10),
                   GestureDetector(
                     onTap: () {},
                     child: Text(
-                      'Register',
+                      '  انشاء حساب',
+                      style: TextStyle(
+                        color: Color(0xff0A638F),
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   ),
+                  Text(
+                    ' ليس لديك حساب جديد؟',
+                    style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  const SizedBox(width: 10),
                 ],
               ),
             ],

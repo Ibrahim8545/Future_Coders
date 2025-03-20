@@ -27,10 +27,11 @@ class CustomTextField extends StatelessWidget {
         }
       },
       decoration: InputDecoration(
-        label: Text(
-          '$hint',
+        label: Align(
+          alignment: Alignment.centerRight,
+          child: Text('$hint'),
         ),
-        labelStyle: const TextStyle(color: Colors.green, fontSize: 16.0),
+        labelStyle: const TextStyle(color: Color(0xff999999), fontSize: 16.0),
         border: const OutlineInputBorder(
           borderSide: BorderSide(
             color: Colors.black,
