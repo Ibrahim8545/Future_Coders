@@ -30,7 +30,7 @@ class CustomTextField extends StatelessWidget {
         label: Text(
           '$hint',
         ),
-        labelStyle: const TextStyle(color: Colors.blue, fontSize: 16.0),
+        labelStyle: const TextStyle(color: Colors.green, fontSize: 16.0),
         border: const OutlineInputBorder(
           borderSide: BorderSide(
             color: Colors.black,
@@ -47,7 +47,7 @@ class CustomTextField extends StatelessWidget {
           ),
         ),
       ),
-      style: TextStyle(
+      style: const TextStyle(
         color: Colors.blue,
       ),
     );
