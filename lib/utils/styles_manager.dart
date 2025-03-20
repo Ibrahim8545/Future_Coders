@@ -19,26 +19,26 @@ TextStyle getLightStyle(
 // regular style
 
 TextStyle getRegularStyle(
-    {double fontSize = FontSize.s12, required Color color}) {
+    {double fontSize = FontSize.s16, required Color color}) {
   return _getTextStyle(fontSize, FontWeightManager.regular, color);
 }
 
 // medium style
 
 TextStyle getMediumStyle(
-    {double fontSize = FontSize.s12, required Color color}) {
+    {double fontSize = FontSize.s16, required Color color}) {
   return _getTextStyle(fontSize, FontWeightManager.medium, color);
 }
 
 // bold style
 
-TextStyle getBoldStyle({double fontSize = FontSize.s12, required Color color}) {
+TextStyle getBoldStyle({double fontSize = FontSize.s24, required Color color}) {
   return _getTextStyle(fontSize, FontWeightManager.bold, color);
 }
 
 // semibold style
 
 TextStyle getSemiBoldStyle(
-    {double fontSize = FontSize.s12, required Color color}) {
+    {double fontSize = FontSize.s20, required Color color}) {
   return _getTextStyle(fontSize, FontWeightManager.semiBold, color);
 }

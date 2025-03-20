@@ -60,4 +60,8 @@ abstract class ColorManager {
 
 
 
+  static Color blue50 = const Color(0xffE6F2FE); // red color
+
+
+
 }

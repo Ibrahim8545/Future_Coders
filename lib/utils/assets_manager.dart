@@ -3,6 +3,7 @@ const String iconsPath = "assets/icons";
 
 abstract class ImageAssets{
   static const String curveImage ="$imagePath/curve.png";
+  static const String igProfile ="$imagePath/igProfile.png";
 
 }
 
