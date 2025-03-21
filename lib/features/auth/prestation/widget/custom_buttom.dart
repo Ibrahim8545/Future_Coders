@@ -1,7 +1,9 @@
+import 'package:courseapp/utils/color_manager.dart';
+import 'package:courseapp/utils/styles_manager.dart';
 import 'package:flutter/material.dart';
 
 class CustomButton extends StatelessWidget {
-  CustomButton({super.key, required this.onTap, required this.text});
+  CustomButton({super.key, required this.onTap, required this.text,re});
   String text;
   VoidCallback onTap;
   @override
@@ -14,11 +16,13 @@ class CustomButton extends StatelessWidget {
         width: double.infinity,
         height: 60,
         child: Center(
-            child: Text(text,
-                style: const TextStyle(
-                    color: Colors.white,
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold))),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(text,
+                    style: getMediumStyle(color: ColorManager.white)),
+              ],
+            )),
       ),
     );
   }

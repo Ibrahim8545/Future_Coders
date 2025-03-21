@@ -3,6 +3,9 @@ const String iconsPath = "assets/icons";
 
 abstract class ImageAssets{
   static const String curveImage ="$imagePath/curve.png";
+  static const String igProfile ="$imagePath/igProfile.png";
+  static const String uploadImage ="$imagePath/uploadImage.png";
+  static const String kidsImg ="$imagePath/kidsImage.png";
 
 }
 
@@ -18,6 +21,7 @@ abstract class IconsAssets{
   static const String _icProfile = "$iconsPath/icProfile.png";
   static const String _logout = "$iconsPath/logout.png";
   static const String _payIcon = "$iconsPath/payIcon.png";
+  static const String _icPen = "$iconsPath/icPen.png";
   static const String _settingIcon = "$iconsPath/settingIcon.png";
 
   static String get arrowBack => _arrowBack;
@@ -31,5 +35,6 @@ abstract class IconsAssets{
   static String get icProfile => _icProfile;
   static String get logout => _logout;
   static String get payIcon => _payIcon;
+  static String get icPen => _icPen;
   static String get settingIcon => _settingIcon;
 }

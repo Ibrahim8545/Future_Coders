@@ -19,6 +19,7 @@ class CustomRowTextAndIconSettings extends StatelessWidget {
           AssetImage(iconPath),
           color: ColorManager.white,
         ),
+        const SizedBox(width: AppSize.s10),
         Text(
           title,
           textAlign: TextAlign.right,

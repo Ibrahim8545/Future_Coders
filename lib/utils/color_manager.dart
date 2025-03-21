@@ -57,6 +57,12 @@ abstract class ColorManager {
   static Color grey2 = const Color(0xff797979);
   static Color white = const Color(0xffFFFFFF);
   static Color error = const Color(0xffe61f34); // red color
+  static Color orange = const Color(0xffF5AA4C); // red color
+
+
+
+  static Color blue50 = const Color(0xffE6F2FE); // red color
+  static Color blue500 = const Color(0xff1686F6); // red color
 
 
 
