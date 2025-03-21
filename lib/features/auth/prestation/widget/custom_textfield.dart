@@ -34,17 +34,17 @@ class CustomTextField extends StatelessWidget {
         labelStyle: const TextStyle(color: Color(0xff999999), fontSize: 16.0),
         border: const OutlineInputBorder(
           borderSide: BorderSide(
-            color: Colors.black,
+            color: Color(0xff0A638F),
           ),
         ),
         enabledBorder: const OutlineInputBorder(
           borderSide: BorderSide(
-            color: Colors.black,
+            color: Color(0xff0A638F),
           ),
         ),
         focusedBorder: const OutlineInputBorder(
           borderSide: BorderSide(
-            color: Colors.black,
+            color: Color(0xff0A638F),
           ),
         ),
       ),

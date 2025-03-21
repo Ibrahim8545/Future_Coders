@@ -1,3 +1,4 @@
+import 'package:courseapp/config/routes/routes.dart';
 import 'package:courseapp/features/auth/prestation/screens/signup_screen.dart';
 import 'package:courseapp/features/auth/prestation/widget/custom_buttom.dart';
 import 'package:courseapp/features/auth/prestation/widget/custom_textfield.dart';
@@ -39,10 +40,15 @@ class LoginPage extends StatelessWidget {
                 obscureText: false,
               ),
               SizedBox(height: 10.h),
-              const Text(
-                'هل نسيت كلمه السر؟',
-                textAlign: TextAlign.end,
-                style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
+              InkWell(
+                onTap: () {
+                  Navigator.pushNamed(context, Routes.forgetPassword);
+                },
+                child: const Text(
+                  'هل نسيت كلمه السر؟',
+                  textAlign: TextAlign.end,
+                  style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
+                ),
               ),
               SizedBox(height: 10.h),
               CustomButton(
@@ -55,9 +61,11 @@ class LoginPage extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  GestureDetector(
-                    onTap: () {},
-                    child: Text(
+                  InkWell(
+                    onTap: () {
+                      Navigator.pushNamed(context, Routes.signUp);
+                    },
+                    child: const Text(
                       '  انشاء حساب',
                       style: TextStyle(
                         color: Color(0xff0A638F),
@@ -66,7 +74,7 @@ class LoginPage extends StatelessWidget {
                       ),
                     ),
                   ),
-                  Text(
+                  const Text(
                     ' ليس لديك حساب جديد؟',
                     style: TextStyle(
                       fontSize: 18,
