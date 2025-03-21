@@ -56,7 +56,7 @@ class SignUpScreen extends StatelessWidget {
               SizedBox(height: 14.h),
               CustomButton(
                 onTap: () {
-                  Navigator.pushNamed(context, Routes.otp);
+                  //Navigator.pushNamed(context, Routes.otp);
                   // if (formKey.currentState!.validate()) {}
                 },
                 text: 'انشاء حساب',
