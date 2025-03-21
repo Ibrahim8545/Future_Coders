@@ -5,7 +5,6 @@ import 'package:courseapp/utils/color_manager.dart';
 import 'package:courseapp/utils/styles_manager.dart';
 import 'package:courseapp/utils/values_manager.dart';
 import 'package:flutter/material.dart';
-import 'package:syncfusion_flutter_charts/charts.dart';
 
 import 'custom_row_following_and_followers.dart';
 
@@ -17,11 +16,11 @@ class ProfileViewBody extends StatefulWidget {
 }
 
 class _ProfileViewBodyState extends State<ProfileViewBody> {
-  late TooltipBehavior _tooltipBehavior;
+  // late TooltipBehavior _tooltipBehavior;
 
   @override
   void initState() {
-    _tooltipBehavior = TooltipBehavior(enable: true);
+    //_tooltipBehavior = TooltipBehavior(enable: true);
     super.initState();
   }
 
@@ -60,11 +59,11 @@ class _ProfileViewBodyState extends State<ProfileViewBody> {
                 child: CustomButton(onTap: () {}, text: "مستوي تقدم الطالب "),
               ),
               Padding(
-                padding: const EdgeInsets.symmetric(
-                    horizontal: AppPadding.p8, vertical: AppPadding.p20),
-                child:
-                    CustomSyncFusionCharts(tooltipBehavior: _tooltipBehavior),
-              )
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: AppPadding.p8, vertical: AppPadding.p20),
+                  child: Text('NO data')
+                  //CustomSyncFusionCharts(tooltipBehavior: _tooltipBehavior),
+                  )
             ],
           ),
           Image.asset(ImageAssets.curveImage),
@@ -83,5 +82,3 @@ class _ProfileViewBodyState extends State<ProfileViewBody> {
     );
   }
 }
-
-

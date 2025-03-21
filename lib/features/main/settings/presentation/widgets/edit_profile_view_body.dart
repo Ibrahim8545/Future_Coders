@@ -2,7 +2,7 @@ import 'package:courseapp/features/auth/prestation/widget/custom_buttom.dart';
 import 'package:courseapp/features/main/settings/presentation/widgets/custom_app_bar.dart';
 import 'package:courseapp/features/main/settings/presentation/widgets/custom_circle_avatar_profile_photo.dart';
 import 'package:courseapp/features/main/settings/presentation/widgets/custom_profile_name_widget.dart';
-import 'package:courseapp/utils/assets_manager.dart';
+
 import 'package:courseapp/utils/values_manager.dart';
 import 'package:flutter/material.dart';
 import 'custom_app_bar_title.dart';

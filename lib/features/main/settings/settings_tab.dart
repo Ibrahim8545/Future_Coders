@@ -14,7 +14,9 @@ class SettingsTab extends StatelessWidget {
       children: [
         Column(
           children: [
-            const CustomRowAppBarTitle(title: "الاعدادات",),
+            const CustomRowAppBarTitle(
+              title: "الاعدادات",
+            ),
             const SizedBox(height: AppSize.s40),
             GestureDetector(
               onTap: () {
@@ -24,23 +26,19 @@ class SettingsTab extends StatelessWidget {
                   iconPath: IconsAssets.settingIcon, title: "الملف الشخصي"),
             ),
             GestureDetector(
-              onTap: (){
+              onTap: () {
                 Navigator.pushNamed(context, Routes.editProfileView);
               },
               child: CustomRowSettingsWidget(
-                  iconPath: IconsAssets.editProfile, title: "تعديل الملف الشخضي"),
+                  iconPath: IconsAssets.editProfile,
+                  title: "تعديل الملف الشخضي"),
             ),
             CustomRowSettingsWidget(
                 iconPath: IconsAssets.favorite, title: "المفضلات"),
             CustomRowSettingsWidget(
                 iconPath: IconsAssets.payIcon, title: "الدفع"),
-            GestureDetector(
-              onTap: (){
-                Navigator.pushNamed(context, Routes.helpView);
-              },
-              child: CustomRowSettingsWidget(
-                  iconPath: IconsAssets.helpIcon, title: "المساعده والتواصل"),
-            ),
+            CustomRowSettingsWidget(
+                iconPath: IconsAssets.helpIcon, title: "المساعده والتواصل"),
             CustomRowSettingsWidget(
                 iconPath: IconsAssets.logout, title: "تسجيل الخروج"),
           ],
@@ -52,4 +50,3 @@ class SettingsTab extends StatelessWidget {
     );
   }
 }
-
