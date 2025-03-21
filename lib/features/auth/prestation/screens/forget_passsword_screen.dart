@@ -1,3 +1,4 @@
+import 'package:courseapp/config/routes/routes.dart';
 import 'package:courseapp/features/auth/prestation/widget/custom_buttom.dart';
 import 'package:courseapp/features/auth/prestation/widget/custom_textfield.dart';
 import 'package:courseapp/utils/assets_manager.dart';
@@ -48,7 +49,11 @@ class ForgetPassword extends StatelessWidget {
                     text: 'Email must be not empty',
                   ),
                   SizedBox(height: 20.h),
-                  CustomButton(onTap: () {}, text: 'استمرار'),
+                  CustomButton(
+                      onTap: () {
+                        Navigator.pushNamed(context, Routes.otp);
+                      },
+                      text: 'استمرار'),
                 ],
               ),
             ),
