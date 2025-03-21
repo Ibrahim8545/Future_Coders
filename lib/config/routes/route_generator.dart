@@ -2,6 +2,7 @@ import 'package:courseapp/config/routes/routes.dart';
 import 'package:courseapp/features/auth/prestation/screens/login_screen.dart';
 import 'package:courseapp/features/auth/prestation/screens/signup_screen.dart';
 import 'package:courseapp/features/main/main_layout.dart';
+import 'package:courseapp/features/main/settings/presentation/widgets/edit_profile_view.dart';
 import 'package:courseapp/features/main/settings/presentation/widgets/profile_view.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -16,7 +17,9 @@ class RouteGenerator {
       case Routes.signUp:
         return MaterialPageRoute(builder: (_) => SignUpScreen());
         case Routes.profileView:
-        return MaterialPageRoute(builder: (_) => ProfileView());
+        return MaterialPageRoute(builder: (_) => const ProfileView());
+        case Routes.editProfileView:
+        return MaterialPageRoute(builder: (_) => const EditProfileView());
       default:
         return unDefinedRoute();
     }

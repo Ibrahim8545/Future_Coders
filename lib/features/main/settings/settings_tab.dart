@@ -23,8 +23,13 @@ class SettingsTab extends StatelessWidget {
               child: CustomRowSettingsWidget(
                   iconPath: IconsAssets.settingIcon, title: "الملف الشخصي"),
             ),
-            CustomRowSettingsWidget(
-                iconPath: IconsAssets.editProfile, title: "تعديل الملف الشخضي"),
+            GestureDetector(
+              onTap: (){
+                Navigator.pushNamed(context, Routes.editProfileView);
+              },
+              child: CustomRowSettingsWidget(
+                  iconPath: IconsAssets.editProfile, title: "تعديل الملف الشخضي"),
+            ),
             CustomRowSettingsWidget(
                 iconPath: IconsAssets.favorite, title: "المفضلات"),
             CustomRowSettingsWidget(
