@@ -17,7 +17,7 @@ class CustomRowAppBarTitle extends StatelessWidget {
       children: [
         Padding(
           padding: const EdgeInsets.only(top: 78.0),
-          child: Text(title, style: getBoldStyle(color: ColorManager.black700)),
+          child: Text(title, style: getBoldStyle(color: ColorManager.black500)),
         ),
       ],
     );
