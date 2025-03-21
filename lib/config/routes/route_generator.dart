@@ -1,5 +1,7 @@
 import 'package:courseapp/config/routes/routes.dart';
+import 'package:courseapp/features/auth/prestation/screens/forget_passsword_screen.dart';
 import 'package:courseapp/features/auth/prestation/screens/login_screen.dart';
+import 'package:courseapp/features/auth/prestation/screens/otp_screen.dart';
 import 'package:courseapp/features/auth/prestation/screens/signup_screen.dart';
 import 'package:courseapp/features/main/main_layout.dart';
 import 'package:flutter/cupertino.dart';
@@ -14,6 +16,11 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (_) => LoginPage());
       case Routes.signUp:
         return MaterialPageRoute(builder: (_) => SignUpScreen());
+      case Routes.forgetPassword:
+        return MaterialPageRoute(builder: (_) => ForgetPassword());
+      case Routes.otp:
+        return MaterialPageRoute(builder: (_) => OtpScreen());
+
       default:
         return unDefinedRoute();
     }

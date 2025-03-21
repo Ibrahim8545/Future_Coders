@@ -1,3 +1,4 @@
+import 'package:courseapp/config/routes/routes.dart';
 import 'package:courseapp/features/auth/prestation/widget/custom_buttom.dart';
 import 'package:courseapp/features/auth/prestation/widget/custom_textfield.dart';
 import 'package:flutter/material.dart';
@@ -5,7 +6,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class SignUpScreen extends StatelessWidget {
   SignUpScreen({super.key});
-  static const String routeName = 'SignUpPage';
+
   final TextEditingController firstNameController = TextEditingController();
   final TextEditingController lastNameController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
@@ -23,63 +24,42 @@ class SignUpScreen extends StatelessWidget {
           key: formKey,
           child: ListView(
             children: [
-              SizedBox(height: 50.h),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    'Physico App',
-                  ),
-                ],
-              ),
-              SizedBox(height: 40.h),
-              Row(
-                children: [
-                  Text(
-                    'Register',
-                  ),
-                ],
-              ),
+              SizedBox(height: 45.h),
+              Image.asset('assets/images/reqqq.jpg'),
+              SizedBox(height: 20.h),
               const SizedBox(height: 20),
               CustomTextField(
                 controller: firstNameController,
-                hint: 'First Name',
+                hint: 'اسم الطالب',
                 text: 'First Name must be not empty',
               ),
               SizedBox(height: 14.h),
               CustomTextField(
-                controller: lastNameController,
-                hint: 'Last Name',
-                text: 'Last Name must be not empty',
-              ),
-              SizedBox(height: 14.h),
-              SizedBox(height: 14.h),
-              CustomTextField(
                 controller: emailController,
-                hint: 'Email',
+                hint: 'ادخل بريدك الالكتروني',
                 text: 'Email must be not empty',
               ),
               SizedBox(height: 14.h),
               CustomTextField(
                 controller: passwordController,
-                hint: 'Password',
+                hint: 'ادخل كلمة المرور',
                 text: 'Password must be not empty',
                 obscureText: false,
               ),
               SizedBox(height: 14.h),
               CustomTextField(
                 controller: confirmPasswordController,
-                hint: 'confirm Password',
+                hint: 'تاكيد كلمة المرور',
                 text: 'Password must be not empty',
                 obscureText: false,
               ),
               SizedBox(height: 14.h),
-              SizedBox(height: 15.h),
               CustomButton(
                 onTap: () {
-                  if (formKey.currentState!.validate()) {}
+                  Navigator.pushNamed(context, Routes.otp);
+                  // if (formKey.currentState!.validate()) {}
                 },
-                text: 'Register',
+                text: 'انشاء حساب',
               ),
               const SizedBox(height: 10),
             ],
