@@ -1,11 +1,9 @@
+import 'package:courseapp/core/utils/assets_manager.dart';
+import 'package:courseapp/core/utils/color_manager.dart';
+import 'package:courseapp/core/utils/styles_manager.dart';
+import 'package:courseapp/core/utils/values_manager.dart';
 import 'package:courseapp/features/auth/prestation/widget/custom_buttom.dart';
-import 'package:courseapp/features/main/settings/presentation/widgets/custom_sync_fusion_charts.dart';
-import 'package:courseapp/utils/assets_manager.dart';
-import 'package:courseapp/utils/color_manager.dart';
-import 'package:courseapp/utils/styles_manager.dart';
-import 'package:courseapp/utils/values_manager.dart';
 import 'package:flutter/material.dart';
-
 import 'custom_row_following_and_followers.dart';
 
 class ProfileViewBody extends StatefulWidget {

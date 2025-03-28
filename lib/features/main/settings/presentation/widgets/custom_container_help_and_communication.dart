@@ -1,6 +1,6 @@
-import 'package:courseapp/utils/color_manager.dart';
-import 'package:courseapp/utils/styles_manager.dart';
-import 'package:courseapp/utils/values_manager.dart';
+import 'package:courseapp/core/utils/color_manager.dart';
+import 'package:courseapp/core/utils/styles_manager.dart';
+import 'package:courseapp/core/utils/values_manager.dart';
 import 'package:flutter/material.dart';
 
 class CustomContainerHelpAndCommunication extends StatelessWidget {

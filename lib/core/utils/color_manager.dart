@@ -65,5 +65,13 @@ abstract class ColorManager {
   static Color blue500 = const Color(0xff1686F6); // red color
 
 
+  static Color yellow = const Color(0xffFFC700); // red color
+  static Color yellow200 = const Color(0xffF6E43C); // red color
+
+
+
+  static Color red600 = const Color(0xffAF1D1D); // red color
+
+
 
 }

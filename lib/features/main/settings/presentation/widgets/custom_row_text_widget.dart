@@ -1,6 +1,6 @@
+import 'package:courseapp/core/utils/color_manager.dart';
+import 'package:courseapp/core/utils/values_manager.dart';
 import 'package:courseapp/features/main/settings/presentation/widgets/custom_row_text_and_icon_settings.dart';
-import 'package:courseapp/utils/color_manager.dart';
-import 'package:courseapp/utils/values_manager.dart';
 import 'package:flutter/material.dart';
 
 class CustomRowSettingsWidget extends StatelessWidget {

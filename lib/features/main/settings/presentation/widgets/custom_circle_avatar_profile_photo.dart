@@ -1,5 +1,5 @@
-import 'package:courseapp/utils/assets_manager.dart';
-import 'package:courseapp/utils/color_manager.dart';
+import 'package:courseapp/core/utils/assets_manager.dart';
+import 'package:courseapp/core/utils/color_manager.dart';
 import 'package:flutter/material.dart';
 
 class CustomCircleAvatarProfilePhoto extends StatelessWidget {

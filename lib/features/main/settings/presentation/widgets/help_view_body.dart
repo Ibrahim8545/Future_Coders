@@ -1,7 +1,7 @@
+import 'package:courseapp/core/utils/values_manager.dart';
 import 'package:courseapp/features/main/settings/presentation/widgets/custom_app_bar.dart';
 import 'package:courseapp/features/main/settings/presentation/widgets/custom_app_bar_title.dart';
 import 'package:courseapp/features/main/settings/presentation/widgets/custom_container_help_and_communication.dart';
-import 'package:courseapp/utils/values_manager.dart';
 import 'package:flutter/material.dart';
 
 class HelpViewBody extends StatelessWidget {

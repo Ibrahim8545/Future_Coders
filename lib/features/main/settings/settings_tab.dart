@@ -1,8 +1,8 @@
 import 'package:courseapp/config/routes/routes.dart';
+import 'package:courseapp/core/utils/assets_manager.dart';
+import 'package:courseapp/core/utils/values_manager.dart';
 import 'package:courseapp/features/main/settings/presentation/widgets/custom_app_bar_title.dart';
 import 'package:courseapp/features/main/settings/presentation/widgets/custom_row_text_widget.dart';
-import 'package:courseapp/utils/assets_manager.dart';
-import 'package:courseapp/utils/values_manager.dart';
 import 'package:flutter/material.dart';
 
 class SettingsTab extends StatelessWidget {
@@ -33,12 +33,22 @@ class SettingsTab extends StatelessWidget {
                   iconPath: IconsAssets.editProfile,
                   title: "تعديل الملف الشخضي"),
             ),
-            CustomRowSettingsWidget(
-                iconPath: IconsAssets.favorite, title: "المفضلات"),
+            GestureDetector(
+              onTap: (){
+                Navigator.pushNamed(context, Routes.favView);
+              },
+              child: CustomRowSettingsWidget(
+                  iconPath: IconsAssets.favorite, title: "المفضلات"),
+            ),
             CustomRowSettingsWidget(
                 iconPath: IconsAssets.payIcon, title: "الدفع"),
-            CustomRowSettingsWidget(
-                iconPath: IconsAssets.helpIcon, title: "المساعده والتواصل"),
+            GestureDetector(
+              onTap: (){
+                Navigator.pushNamed(context, Routes.helpView);
+              },
+              child: CustomRowSettingsWidget(
+                  iconPath: IconsAssets.helpIcon, title: "المساعده والتواصل"),
+            ),
             CustomRowSettingsWidget(
                 iconPath: IconsAssets.logout, title: "تسجيل الخروج"),
           ],

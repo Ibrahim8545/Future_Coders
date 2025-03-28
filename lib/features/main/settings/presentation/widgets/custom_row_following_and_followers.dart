@@ -1,6 +1,5 @@
-import 'package:courseapp/utils/values_manager.dart';
+import 'package:courseapp/core/utils/values_manager.dart';
 import 'package:flutter/material.dart';
-
 import 'custom_container_for_following.dart';
 
 class CustomRowFollowingAndFollowers extends StatelessWidget {

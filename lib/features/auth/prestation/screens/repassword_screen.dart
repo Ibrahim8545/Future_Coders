@@ -1,8 +1,8 @@
 import 'package:courseapp/config/routes/routes.dart';
+import 'package:courseapp/core/utils/assets_manager.dart';
+import 'package:courseapp/core/utils/styles_manager.dart';
 import 'package:courseapp/features/auth/prestation/widget/custom_buttom.dart';
 import 'package:courseapp/features/auth/prestation/widget/custom_textfield.dart';
-import 'package:courseapp/utils/assets_manager.dart';
-import 'package:courseapp/utils/styles_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 

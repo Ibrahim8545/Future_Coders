@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'help_view_body.dart';
+import '../widgets/help_view_body.dart';
 
 class HelpView extends StatelessWidget {
   const HelpView({super.key});

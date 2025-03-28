@@ -1,5 +1,5 @@
-import 'package:courseapp/utils/color_manager.dart';
-import 'package:courseapp/utils/styles_manager.dart';
+import 'package:courseapp/core/utils/color_manager.dart';
+import 'package:courseapp/core/utils/styles_manager.dart';
 import 'package:flutter/material.dart';
 
 class CustomButton extends StatelessWidget {
@@ -12,7 +12,7 @@ class CustomButton extends StatelessWidget {
       onTap: onTap,
       child: Container(
         decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(8), color: Color(0xff0A638F)),
+            borderRadius: BorderRadius.circular(8), color: const Color(0xff0A638F)),
         width: double.infinity,
         height: 60,
         child: Center(

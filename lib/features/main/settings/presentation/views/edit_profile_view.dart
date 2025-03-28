@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'edit_profile_view_body.dart';
+import '../widgets/edit_profile_view_body.dart';
 
 class EditProfileView extends StatelessWidget {
   const EditProfileView({super.key});
