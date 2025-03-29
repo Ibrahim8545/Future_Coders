@@ -38,10 +38,10 @@ class CoursesCompleteTab extends StatelessWidget {
                 width: MediaQuery.of(context).size.width,
                 rate: "100%",
                 text: "٤ دروس",
-                iconColor: ColorManager.primary700,
+                iconColor: ColorManager.white,
                 title: "التفكير المنطقي",
                 instructorName: '  م.محمد ربيع ',
-                image: ImageAssets.completeImage,
+                image: ImageAssets.technologicImg,
               ),
               SizedBox(
                 height: AppSize.s16.h,

@@ -15,6 +15,8 @@ abstract class ImageAssets{
   static const String notCompleteImg  ="$imagePath/notCompleteImg.png";
   static const String courcesImage ="$imagePath/courcesImage.png";
   static const String participationImage ="$imagePath/participation.png";
+  static const String taskImg ="$imagePath/taskImg.png";
+  static const String technologicImg ="$imagePath/technologicImg.png";
 
 }
 
