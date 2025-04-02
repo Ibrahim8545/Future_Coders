@@ -1,3 +1,4 @@
+import 'package:courseapp/features/main/home/presentation/widget/home_tab_body.dart';
 import 'package:flutter/material.dart';
 
 class HomeTab extends StatelessWidget {
@@ -5,8 +6,8 @@ class HomeTab extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: Colors.green,
+    return Scaffold(
+      body: SafeArea(child: HomeTabBody()),
     );
   }
 }

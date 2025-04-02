@@ -1,5 +1,4 @@
 import 'package:courseapp/config/routes/routes.dart';
-import 'package:courseapp/features/auth/prestation/screens/signup_screen.dart';
 import 'package:courseapp/features/auth/prestation/widget/custom_buttom.dart';
 import 'package:courseapp/features/auth/prestation/widget/custom_textfield.dart';
 import 'package:flutter/material.dart';

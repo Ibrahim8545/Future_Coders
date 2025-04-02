@@ -5,7 +5,7 @@ import 'package:courseapp/features/main/fathers/fathers_tab.dart';
 import 'package:courseapp/features/main/settings/settings_tab.dart';
 import 'package:flutter/material.dart';
 
-import 'home/home_tab.dart';
+import 'home/presentation/views/home_tab.dart';
 
 class MainLayout extends StatefulWidget {
   const MainLayout({super.key});
@@ -18,7 +18,7 @@ class _MainLayoutState extends State<MainLayout> {
   int currentIndex = 4;
   List<Widget> tabs = [
     const HomeTab(),
-     CoursesTab(),
+    CoursesTab(),
     const FathersTab(),
     const CommunityTab(),
     const SettingsTab()
@@ -41,4 +41,3 @@ class _MainLayoutState extends State<MainLayout> {
     });
   }
 }
-

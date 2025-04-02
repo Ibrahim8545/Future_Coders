@@ -8,7 +8,9 @@ class CustomTextField extends StatelessWidget {
       this.text,
       this.obscureText = false,
       this.controller,
-      this.keyboardType});
+      this.keyboardType,
+      this.suffixIcon,
+      this.prefixIcon});
 
   String? hint;
   String? text;
@@ -16,6 +18,8 @@ class CustomTextField extends StatelessWidget {
   TextEditingController? controller;
   TextInputType? keyboardType;
   int? maxLines;
+  Widget? suffixIcon;
+  Widget? prefixIcon;
 
   @override
   Widget build(BuildContext context) {
@@ -30,6 +34,8 @@ class CustomTextField extends StatelessWidget {
         }
       },
       decoration: InputDecoration(
+        prefixIcon: prefixIcon,
+        suffixIcon: suffixIcon,
         label: Align(
           alignment: Alignment.centerRight,
           child: Text('$hint'),
