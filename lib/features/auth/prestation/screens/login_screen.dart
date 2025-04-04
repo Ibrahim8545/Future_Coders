@@ -57,12 +57,11 @@ class LoginPage extends StatelessWidget {
               ),
               SizedBox(height: 16.h),
               Row(
-                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   const Expanded(
                     child: const Divider(
                       color: Color(0xff999999),
-                      thickness: 2,
+                      thickness: 1,
                     ),
                   ),
                   SizedBox(
@@ -75,7 +74,7 @@ class LoginPage extends StatelessWidget {
                   const Expanded(
                     child: const Divider(
                       color: Color(0xff999999),
-                      thickness: 2,
+                      thickness: 1,
                     ),
                   ),
                 ],
