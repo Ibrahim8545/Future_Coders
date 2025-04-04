@@ -12,9 +12,7 @@ class LoginPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Get current theme
     return Scaffold(
-      // Use theme color
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 8.0),
         child: Form(
@@ -56,6 +54,44 @@ class LoginPage extends StatelessWidget {
                   Navigator.pushNamed(context, Routes.mainRoute);
                 },
                 text: 'تسجيل الدخول ',
+              ),
+              SizedBox(height: 16.h),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Expanded(
+                    child: const Divider(
+                      color: Color(0xff999999),
+                      thickness: 2,
+                    ),
+                  ),
+                  SizedBox(
+                    width: 4.w,
+                  ),
+                  const Text('او'),
+                  SizedBox(
+                    width: 4.w,
+                  ),
+                  const Expanded(
+                    child: const Divider(
+                      color: Color(0xff999999),
+                      thickness: 2,
+                    ),
+                  ),
+                ],
+              ),
+              SizedBox(height: 10.h),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Image.asset('assets/images/google.png'),
+                  SizedBox(width: 32.w),
+                  Image.asset('assets/images/apple.png'),
+                  SizedBox(width: 32.w),
+                  Image.asset(
+                    'assets/images/face.png',
+                  ),
+                ],
               ),
               SizedBox(height: 10.h),
               Row(
