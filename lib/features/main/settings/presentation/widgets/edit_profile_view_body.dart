@@ -29,6 +29,7 @@ class EditProfileViewBody extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: AppPadding.p20),
               child: CustomButton(
+                color: const Color(0xff0A638F),
                 onTap: () {},
                 text: "البريد الالكتروني",
               ),
@@ -36,7 +37,10 @@ class EditProfileViewBody extends StatelessWidget {
             const SizedBox(height: AppSize.s12),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: AppPadding.p20),
-              child: CustomButton(onTap: () {}, text: "كلمه المرور"),
+              child: CustomButton(
+                  color: const Color(0xff0A638F),
+                  onTap: () {},
+                  text: "كلمه المرور"),
             ),
           ],
         ),

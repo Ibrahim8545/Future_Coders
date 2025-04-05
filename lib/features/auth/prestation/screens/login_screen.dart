@@ -49,6 +49,7 @@ class LoginPage extends StatelessWidget {
               ),
               SizedBox(height: 10.h),
               CustomButton(
+                color: const Color(0xff0A638F),
                 onTap: () {
                   //if (formKey.currentState!.validate()) {}
                   Navigator.pushNamed(context, Routes.mainRoute);

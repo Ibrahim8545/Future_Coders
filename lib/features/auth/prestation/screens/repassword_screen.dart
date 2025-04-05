@@ -72,6 +72,7 @@ class RepasswordScreen extends StatelessWidget {
                     height: 24.h,
                   ),
                   CustomButton(
+                      color: const Color(0xff0A638F),
                       onTap: () {
                         Navigator.pushReplacementNamed(
                             context, Routes.confirmChangePasswordSplashScreen);

@@ -2,8 +2,8 @@ import 'package:courseapp/core/utils/color_manager.dart';
 import 'package:courseapp/core/utils/styles_manager.dart';
 import 'package:flutter/material.dart';
 
-class CustomButton extends StatelessWidget {
-  CustomButton(
+class CustomSkipBotton extends StatelessWidget {
+  CustomSkipBotton(
       {super.key,
       required this.onTap,
       required this.text,
@@ -17,15 +17,17 @@ class CustomButton extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        decoration:
-            BoxDecoration(borderRadius: BorderRadius.circular(8), color: color),
+        decoration: BoxDecoration(
+            border: Border.all(color: const Color(0xff0A638F)),
+            borderRadius: BorderRadius.circular(8),
+            color: color),
         width: double.infinity,
         height: 60,
         child: Center(
             child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(text, style: getMediumStyle(color: ColorManager.white)),
+            Text(text, style: getMediumStyle(color: Colors.black)),
           ],
         )),
       ),

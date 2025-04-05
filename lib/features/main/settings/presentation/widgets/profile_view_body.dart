@@ -48,13 +48,19 @@ class _ProfileViewBodyState extends State<ProfileViewBody> {
               Padding(
                 padding: const EdgeInsets.symmetric(
                     horizontal: AppPadding.p8, vertical: AppPadding.p12),
-                child: CustomButton(onTap: () {}, text: "اضف صديق +"),
+                child: CustomButton(
+                    color: const Color(0xff0A638F),
+                    onTap: () {},
+                    text: "اضف صديق +"),
               ),
               const CustomRowFollowingAndFollowers(),
               Padding(
                 padding: const EdgeInsets.symmetric(
                     horizontal: AppPadding.p8, vertical: AppPadding.p20),
-                child: CustomButton(onTap: () {}, text: "مستوي تقدم الطالب "),
+                child: CustomButton(
+                    color: const Color(0xff0A638F),
+                    onTap: () {},
+                    text: "مستوي تقدم الطالب "),
               ),
               Padding(
                   padding: const EdgeInsets.symmetric(

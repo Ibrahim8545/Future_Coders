@@ -20,7 +20,7 @@ class CoursesApp extends StatelessWidget {
         locale: Locale('ar'),
         debugShowCheckedModeBanner: false,
         onGenerateRoute: RouteGenerator.getRoute,
-        initialRoute: Routes.signIn,
+        initialRoute: Routes.onBoardingScreen,
       ),
     );
   }

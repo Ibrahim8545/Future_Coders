@@ -10,6 +10,8 @@ import 'package:courseapp/features/main/settings/presentation/views/edit_profile
 import 'package:courseapp/features/main/settings/presentation/views/favourite_view.dart';
 import 'package:courseapp/features/main/settings/presentation/views/help_view.dart';
 import 'package:courseapp/features/main/settings/presentation/views/profile_view.dart';
+import 'package:courseapp/features/onboarding/prestatation/views/onbarding_view.dart';
+import 'package:courseapp/features/onboarding/prestatation/widget/screen.dart';
 import 'package:flutter/material.dart';
 
 class RouteGenerator {
@@ -25,9 +27,9 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (_) => const ProfileView());
       case Routes.editProfileView:
         return MaterialPageRoute(builder: (_) => const EditProfileView());
-        case Routes.favView:
+      case Routes.favView:
         return MaterialPageRoute(builder: (_) => const FavouriteView());
-        case Routes.helpView:
+      case Routes.helpView:
         return MaterialPageRoute(builder: (_) => const HelpView());
       case Routes.forgetPassword:
         return MaterialPageRoute(builder: (_) => const ForgetPassword());
@@ -35,6 +37,8 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (_) => const OtpScreen());
       case Routes.repassword:
         return MaterialPageRoute(builder: (_) => const RepasswordScreen());
+      case Routes.onBoardingScreen:
+        return MaterialPageRoute(builder: (_) => const OnBoardindScreen());
       case Routes.confirmChangePasswordSplashScreen:
         return MaterialPageRoute(
             builder: (_) => const ConfirmChangePasswordSplashScreen());

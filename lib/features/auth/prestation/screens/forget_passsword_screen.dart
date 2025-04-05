@@ -50,6 +50,7 @@ class ForgetPassword extends StatelessWidget {
                   ),
                   SizedBox(height: 20.h),
                   CustomButton(
+                      color: const Color(0xff0A638F),
                       onTap: () {
                         Navigator.pushNamed(context, Routes.otp);
                       },
