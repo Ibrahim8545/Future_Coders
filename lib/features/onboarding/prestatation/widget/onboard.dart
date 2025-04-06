@@ -1,3 +1,5 @@
+import 'package:courseapp/core/utils/color_manager.dart';
+import 'package:courseapp/core/utils/styles_manager.dart';
 import 'package:courseapp/features/onboarding/data/model.dart';
 import 'package:flutter/material.dart';
 
@@ -8,28 +10,28 @@ class OnboardingPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 40),
-      child: Column(
-        children: [
-          Image.asset(model.image, height: 300),
-          const SizedBox(height: 30),
-          Text(
-            model.title,
-            style: const TextStyle(
-              fontSize: 24,
-              fontWeight: FontWeight.bold,
+    return Stack(
+      children: [
+        Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Image.asset(model.image),
+            Text(
+              model.title,
+              style: getBoldStyle(
+                color: ColorManager.black500,
+                fontSize: 24,
+              ),
+              textAlign: TextAlign.center,
             ),
-            textAlign: TextAlign.center,
-          ),
-          const SizedBox(height: 16),
-          Text(
-            model.description,
-            style: const TextStyle(fontSize: 16),
-            textAlign: TextAlign.center,
-          ),
-        ],
-      ),
+              Text(
+              model.description,
+              style: getMediumStyle(color: ColorManager.grey400),
+              textAlign: TextAlign.center,
+            ),
+          ],
+        ),
+      ],
     );
   }
 }

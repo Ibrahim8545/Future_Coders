@@ -18,7 +18,7 @@ class CustomSkipBotton extends StatelessWidget {
       onTap: onTap,
       child: Container(
         decoration: BoxDecoration(
-            border: Border.all(color: const Color(0xff0A638F)),
+            border: Border.all(color: const Color(0xff0A638F),width: 3),
             borderRadius: BorderRadius.circular(8),
             color: color),
         width: double.infinity,

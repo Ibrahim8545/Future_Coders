@@ -5,13 +5,13 @@ import 'package:courseapp/features/auth/prestation/screens/login_screen.dart';
 import 'package:courseapp/features/auth/prestation/screens/otp_screen.dart';
 import 'package:courseapp/features/auth/prestation/screens/repassword_screen.dart';
 import 'package:courseapp/features/auth/prestation/screens/signup_screen.dart';
+import 'package:courseapp/features/main/cources/presentation/views/progress_view.dart';
 import 'package:courseapp/features/main/main_layout.dart';
 import 'package:courseapp/features/main/settings/presentation/views/edit_profile_view.dart';
 import 'package:courseapp/features/main/settings/presentation/views/favourite_view.dart';
 import 'package:courseapp/features/main/settings/presentation/views/help_view.dart';
 import 'package:courseapp/features/main/settings/presentation/views/profile_view.dart';
 import 'package:courseapp/features/onboarding/prestatation/views/onbarding_view.dart';
-import 'package:courseapp/features/onboarding/prestatation/widget/screen.dart';
 import 'package:flutter/material.dart';
 
 class RouteGenerator {
@@ -42,6 +42,9 @@ class RouteGenerator {
       case Routes.confirmChangePasswordSplashScreen:
         return MaterialPageRoute(
             builder: (_) => const ConfirmChangePasswordSplashScreen());
+        case Routes.progressView:
+        return MaterialPageRoute(
+            builder: (_) => const ProgressView());
       default:
         return unDefinedRoute();
     }

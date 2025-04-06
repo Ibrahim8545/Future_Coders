@@ -1,10 +1,12 @@
 import 'package:courseapp/config/routes/routes.dart';
+import 'package:courseapp/core/utils/color_manager.dart';
 import 'package:courseapp/features/auth/prestation/widget/custom_buttom.dart';
 import 'package:courseapp/features/onboarding/data/model.dart';
 import 'package:courseapp/features/onboarding/prestatation/widget/onboarding_custom_button_skip.dart';
 import 'package:courseapp/features/onboarding/prestatation/widget/custom_indicator.dart';
 import 'package:courseapp/features/onboarding/prestatation/widget/onboard.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../../core/utils/assets_manager.dart';
 
@@ -58,32 +60,48 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
+      body: Stack(
         children: [
-          Expanded(
-            child: PageView.builder(
-              controller: _controller,
-              itemCount: pages.length,
-              onPageChanged: (index) => setState(() => currentIndex = index),
-              itemBuilder: (context, index) =>
-                  OnboardingPage(model: pages[index]),
+          Positioned(
+            bottom: -11.w,
+            left: 100,
+            child: Image.asset(
+              'assets/images/curvebottom.png',
             ),
           ),
-          CustomIndicator(controller: _controller, count: pages.length),
-          const SizedBox(height: 24),
           Column(
             children: [
-              CustomButton(
-                  onTap: _nextPage, text: 'استمرار', color: Colors.blue),
-              if (currentIndex != pages.length - 1)
-                CustomSkipBotton(
-                  onTap: _finishOnboarding,
-                  text: 'تخطى',
-                  color: Colors.transparent,
+              Expanded(
+                child: PageView.builder(
+                  controller: _controller,
+                  itemCount: pages.length,
+                  onPageChanged: (index) => setState(() => currentIndex = index),
+                  itemBuilder: (context, index) =>
+                      OnboardingPage(model: pages[index]),
                 ),
+              ),
+              CustomIndicator(controller: _controller, count: pages.length),
+              const SizedBox(height: 24),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                child: Column(
+                  children: [
+                    CustomButton(
+                        onTap: _nextPage, text: 'استمرار', color: ColorManager.primary700),
+                    SizedBox(height: 8.h),
+                    if (currentIndex != pages.length - 1)
+                      CustomSkipBotton(
+                        onTap: _finishOnboarding,
+                        text: 'تخطى',
+                        color: Colors.transparent,
+                      ),
+                  ],
+                ),
+              ),
+              const SizedBox(height: 24),
             ],
           ),
-          const SizedBox(height: 24),
+          Image.asset(ImageAssets.curveImage)
         ],
       ),
     );

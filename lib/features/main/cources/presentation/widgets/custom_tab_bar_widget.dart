@@ -27,6 +27,11 @@ class _CustomTabBarWidgetState extends State<CustomTabBarWidget>
     widget.tabController =
         TabController(length: widget.tabs.length, vsync: this);
   }
+  @override
+  void dispose() {
+    super.dispose();
+    widget.tabController.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {

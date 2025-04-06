@@ -7,7 +7,7 @@ class CustomButton extends StatelessWidget {
       {super.key,
       required this.onTap,
       required this.text,
-      required this.color,
+       this.color,
       re});
   String text;
   VoidCallback onTap;
@@ -18,7 +18,8 @@ class CustomButton extends StatelessWidget {
       onTap: onTap,
       child: Container(
         decoration:
-            BoxDecoration(borderRadius: BorderRadius.circular(8), color: color),
+            BoxDecoration(borderRadius: BorderRadius.circular(8),
+                color: color),
         width: double.infinity,
         height: 60,
         child: Center(

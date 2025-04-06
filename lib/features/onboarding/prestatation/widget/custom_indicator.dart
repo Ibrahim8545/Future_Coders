@@ -1,3 +1,4 @@
+import 'package:courseapp/core/utils/color_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
@@ -16,9 +17,9 @@ class CustomIndicator extends StatelessWidget {
     return SmoothPageIndicator(
       controller: controller,
       count: count,
-      effect: WormEffect(
-        dotColor: Colors.grey,
-        activeDotColor: Colors.blue,
+      effect: ExpandingDotsEffect(
+        dotColor: ColorManager.primary500,
+        activeDotColor: ColorManager.primary700,
         dotHeight: 10,
         dotWidth: 10,
       ),

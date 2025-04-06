@@ -1,4 +1,6 @@
 import 'package:courseapp/config/routes/routes.dart';
+import 'package:courseapp/core/utils/color_manager.dart';
+import 'package:courseapp/core/utils/styles_manager.dart';
 import 'package:courseapp/features/auth/prestation/widget/custom_buttom.dart';
 import 'package:courseapp/features/auth/prestation/widget/custom_textfield.dart';
 import 'package:flutter/material.dart';
@@ -9,6 +11,8 @@ class LoginPage extends StatelessWidget {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
+
+  LoginPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -41,10 +45,10 @@ class LoginPage extends StatelessWidget {
                 onTap: () {
                   Navigator.pushNamed(context, Routes.forgetPassword);
                 },
-                child: const Text(
+                child:  Text(
                   'هل نسيت كلمه السر؟',
                   textAlign: TextAlign.end,
-                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+                  style:getMediumStyle(color: ColorManager.black500,fontSize: 16),
                 ),
               ),
               SizedBox(height: 10.h),
@@ -68,7 +72,7 @@ class LoginPage extends StatelessWidget {
                   SizedBox(
                     width: 4.w,
                   ),
-                  const Text('او'),
+                   Text('او',style: getBoldStyle(color: ColorManager.black500,fontSize: 16)),
                   SizedBox(
                     width: 4.w,
                   ),
@@ -101,21 +105,14 @@ class LoginPage extends StatelessWidget {
                     onTap: () {
                       Navigator.pushNamed(context, Routes.signUp);
                     },
-                    child: const Text(
+                    child:  Text(
                       '  انشاء حساب',
-                      style: TextStyle(
-                        color: Color(0xff0A638F),
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                      ),
+                      style: getBoldStyle(color: ColorManager.primary700,fontSize: 16),
                     ),
                   ),
-                  const Text(
-                    ' ليس لديك حساب جديد؟',
-                    style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                    ),
+                   Text(
+                    '  ليس لديك حساب جديد؟',
+                      style:getBoldStyle(color: ColorManager.black500,fontSize: 16)
                   ),
                   const SizedBox(width: 10),
                 ],

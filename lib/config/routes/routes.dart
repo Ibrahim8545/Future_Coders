@@ -10,5 +10,6 @@ class Routes {
   static const String helpView = '/helpView';
   static const String repassword = '/repassword';
   static const String confirmChangePasswordSplashScreen = '/confirmpassword';
-  static const String onBoardingScreen = '/onBoarding';
+  static const String onBoardingScreen = '/onBoardingScreen';
+  static const String progressView = '/progressView';
 }
