@@ -17,6 +17,9 @@ abstract class ImageAssets{
   static const String participationImage ="$imagePath/participation.png";
   static const String taskImg ="$imagePath/taskImg.png";
   static const String technologicImg ="$imagePath/technologicImg.png";
+  static const String imageArticleTwo ="$imagePath/imageArticleTwo.png";
+  static const String imageBook ="$imagePath/imageBook.png";
+  static const String writerImage ="$imagePath/writerImage.png";
 
 }
 
@@ -41,6 +44,7 @@ abstract class IconsAssets{
   static const String _fNotebookIc = "$iconsPath/fNotebookIc.png";
   static const String _iClockIc = "$iconsPath/iClockic.png";
   static const String _BULBCIcon = "$iconsPath/BULBCIcon.png";
+  static const String _whiteFav = "$iconsPath/whiteFav.png";
 
   static String get arrowBack => _arrowBack;
   static String get editProfile => _editProfile;
@@ -62,4 +66,5 @@ abstract class IconsAssets{
   static String get fNotebookIc => _fNotebookIc;
   static String get iClockIc => _iClockIc;
   static String get BULBCIcon => _BULBCIcon;
+  static String get whiteFav => _whiteFav;
 }

@@ -12,4 +12,6 @@ class Routes {
   static const String confirmChangePasswordSplashScreen = '/confirmpassword';
   static const String onBoardingScreen = '/onBoardingScreen';
   static const String progressView = '/progressView';
+  static const String articlesView = '/articlesView';
+  static const String booksView = '/booksView';
 }

@@ -5,14 +5,16 @@ import 'package:courseapp/core/utils/values_manager.dart';
 import 'package:flutter/material.dart';
 
 class CustomElevatedButton extends StatelessWidget {
-  const CustomElevatedButton({
+   const CustomElevatedButton({
     super.key, required this.title,
+     required this.onPressed
   });
   final String title;
+ final  void Function() onPressed;
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
-        onPressed: () {},
+        onPressed: onPressed,
         style: ElevatedButton.styleFrom(
             backgroundColor: ColorManager.primary700,
             shape: const RoundedRectangleBorder(

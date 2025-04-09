@@ -32,7 +32,7 @@ class FavouriteCoursesContainer extends StatelessWidget {
                       color: ColorManager.primary700,
                     ),
                   ),
-                  const CustomElevatedButton(title: "ابدا الان",)
+                   CustomElevatedButton(title: "ابدا الان",onPressed: (){},)
                 ],
               ),
               Image.asset(

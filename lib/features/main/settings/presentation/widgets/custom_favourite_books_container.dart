@@ -1,4 +1,4 @@
-import 'package:courseapp/core/utils/assets_manager.dart';
+import 'package:courseapp/config/routes/routes.dart';
 import 'package:courseapp/core/utils/color_manager.dart';
 import 'package:courseapp/core/utils/components/build_box_decoration.dart';
 import 'package:courseapp/core/utils/styles_manager.dart';
@@ -8,8 +8,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'custom_elevated_button.dart';
 class CustomFavouriteBooksContainer extends StatelessWidget {
-  const CustomFavouriteBooksContainer({super.key});
-
+  const CustomFavouriteBooksContainer({super.key, required this.image});
+final String image;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -53,13 +53,15 @@ class CustomFavouriteBooksContainer extends StatelessWidget {
                         Icon(Icons.star,color: ColorManager.yellow),
                       ],
                     ),
-                    const Padding(
-                      padding: EdgeInsets.only(top: AppPadding.p20),
-                      child: CustomElevatedButton(title: "أقرأ الان"),
+                     Padding(
+                      padding: const EdgeInsets.only(top: AppPadding.p20),
+                      child: CustomElevatedButton(title: "أقرأ الان",onPressed: (){
+                        Navigator.pushNamed(context, Routes.booksView);
+                      },),
                     )
                   ],
                 ),
-                Image.asset(ImageAssets.bookImage),
+                Image.asset(image),
               ],
             )
           ],

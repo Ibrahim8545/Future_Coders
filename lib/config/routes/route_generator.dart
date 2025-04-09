@@ -6,6 +6,8 @@ import 'package:courseapp/features/auth/prestation/screens/otp_screen.dart';
 import 'package:courseapp/features/auth/prestation/screens/repassword_screen.dart';
 import 'package:courseapp/features/auth/prestation/screens/signup_screen.dart';
 import 'package:courseapp/features/main/cources/presentation/views/progress_view.dart';
+import 'package:courseapp/features/main/fathers/presentaion/views/full_articles_view.dart';
+import 'package:courseapp/features/main/fathers/presentaion/views/full_books_view.dart';
 import 'package:courseapp/features/main/main_layout.dart';
 import 'package:courseapp/features/main/settings/presentation/views/edit_profile_view.dart';
 import 'package:courseapp/features/main/settings/presentation/views/favourite_view.dart';
@@ -42,6 +44,12 @@ class RouteGenerator {
       case Routes.confirmChangePasswordSplashScreen:
         return MaterialPageRoute(
             builder: (_) => const ConfirmChangePasswordSplashScreen());
+        case Routes.articlesView:
+        return MaterialPageRoute(
+            builder: (_) => const FullArticlesView());
+        case Routes.booksView:
+        return MaterialPageRoute(
+            builder: (_) => const FullBooksView());
         case Routes.progressView:
         return MaterialPageRoute(
             builder: (_) => const ProgressView());

@@ -18,9 +18,9 @@ class _MainLayoutState extends State<MainLayout> {
   int currentIndex = 4;
   List<Widget> tabs = [
     const HomeTab(),
-    CoursesTab(),
-    const FathersTab(),
-    const CommunityTab(),
+    const CoursesTab(),
+     const FathersTab(),
+     const CommunityTab(),
     const SettingsTab()
   ];
 

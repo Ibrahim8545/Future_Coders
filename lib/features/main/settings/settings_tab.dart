@@ -49,8 +49,13 @@ class SettingsTab extends StatelessWidget {
               child: CustomRowSettingsWidget(
                   iconPath: IconsAssets.helpIcon, title: "المساعده والتواصل"),
             ),
-            CustomRowSettingsWidget(
-                iconPath: IconsAssets.logout, title: "تسجيل الخروج"),
+            GestureDetector(
+              onTap: (){
+                Navigator.pushReplacementNamed(context, Routes.signIn);
+              },
+              child: CustomRowSettingsWidget(
+                  iconPath: IconsAssets.logout, title: "تسجيل الخروج"),
+            ),
           ],
         ),
         Positioned(

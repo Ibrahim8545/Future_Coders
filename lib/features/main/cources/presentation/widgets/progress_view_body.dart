@@ -101,7 +101,7 @@ class _ProgressViewBodyState extends State<ProgressViewBody>
                     ],
                   ),
                 ),
-                CustomProgressTabBar(tabs: tabs, tabController: tabController)
+                CustomProgressTabBar(tabs: tabs, tabController: tabController),
               ],
             ),
             const CustomAppBar()
@@ -111,6 +111,4 @@ class _ProgressViewBodyState extends State<ProgressViewBody>
     );
   }
 }
-
-
 

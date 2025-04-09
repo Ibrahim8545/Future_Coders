@@ -1,13 +1,12 @@
 import 'package:courseapp/core/utils/assets_manager.dart';
 import 'package:courseapp/core/utils/color_manager.dart';
+import 'package:courseapp/core/utils/styles_manager.dart';
 import 'package:courseapp/features/main/widgets/custom_nav_bar_item.dart';
 import 'package:flutter/material.dart';
 
 BottomNavigationBar buildBottomNavigationBar(int currentIndex,changeSelectedIndex) {
   return BottomNavigationBar(
-    selectedLabelStyle: TextStyle(
-        color: ColorManager.primary700
-    ),
+    selectedLabelStyle: getBoldStyle(color: const Color(0xff0A638F),fontSize: 16),
     currentIndex: currentIndex,
     onTap: changeSelectedIndex,
     type: BottomNavigationBarType.fixed,
