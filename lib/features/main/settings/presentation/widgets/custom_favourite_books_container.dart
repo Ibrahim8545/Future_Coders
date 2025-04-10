@@ -55,7 +55,10 @@ final String image;
                     ),
                      Padding(
                       padding: const EdgeInsets.only(top: AppPadding.p20),
-                      child: CustomElevatedButton(title: "أقرأ الان",onPressed: (){
+                      child: CustomElevatedButton(
+                        textColor: ColorManager.white,
+                        color: ColorManager.primary700,
+                        title: "أقرأ الان",onPressed: (){
                         Navigator.pushNamed(context, Routes.booksView);
                       },),
                     )

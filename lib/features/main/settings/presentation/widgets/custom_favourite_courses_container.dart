@@ -14,8 +14,9 @@ class FavouriteCoursesContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.symmetric(horizontal: AppPadding.p16,vertical: AppPadding.p16),
-      padding: const EdgeInsets.symmetric(horizontal: 16,vertical: 20),
+      margin: const EdgeInsets.symmetric(
+          horizontal: AppPadding.p16, vertical: AppPadding.p16),
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
       width: double.infinity,
       decoration: buildBoxDecoration(),
       child: Column(
@@ -32,7 +33,12 @@ class FavouriteCoursesContainer extends StatelessWidget {
                       color: ColorManager.primary700,
                     ),
                   ),
-                   CustomElevatedButton(title: "ابدا الان",onPressed: (){},)
+                  CustomElevatedButton(
+                    textColor: ColorManager.white,
+                    title: "ابدا الان",
+                    onPressed: () {},
+                    color: ColorManager.primary700,
+                  )
                 ],
               ),
               Image.asset(
@@ -44,8 +50,4 @@ class FavouriteCoursesContainer extends StatelessWidget {
       ),
     );
   }
-
-
 }
-
-

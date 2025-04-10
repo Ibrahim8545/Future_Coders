@@ -8,6 +8,10 @@ import 'package:courseapp/features/auth/prestation/screens/signup_screen.dart';
 import 'package:courseapp/features/main/cources/presentation/views/progress_view.dart';
 import 'package:courseapp/features/main/fathers/presentaion/views/full_articles_view.dart';
 import 'package:courseapp/features/main/fathers/presentaion/views/full_books_view.dart';
+import 'package:courseapp/features/main/home/model/course_model.dart';
+import 'package:courseapp/features/main/home/presentation/views/games_view.dart';
+import 'package:courseapp/features/main/home/presentation/views/programming_view.dart';
+import 'package:courseapp/features/main/home/presentation/views/video_player_view.dart';
 import 'package:courseapp/features/main/main_layout.dart';
 import 'package:courseapp/features/main/settings/presentation/views/edit_profile_view.dart';
 import 'package:courseapp/features/main/settings/presentation/views/favourite_view.dart';
@@ -50,6 +54,16 @@ class RouteGenerator {
         case Routes.booksView:
         return MaterialPageRoute(
             builder: (_) => const FullBooksView());
+        case Routes.programmingView:
+        return MaterialPageRoute(
+            builder: (_) => const ProgrammingView());
+        case Routes.gamesView:
+        return MaterialPageRoute(
+            builder: (_) =>  GamesView());
+        case Routes.videoPlayerView:
+          final youtubeUrl = settings.arguments as String;
+        return MaterialPageRoute(
+            builder: (_) =>  VideoPlayerView(youtubeUrl: youtubeUrl,),);
         case Routes.progressView:
         return MaterialPageRoute(
             builder: (_) => const ProgressView());

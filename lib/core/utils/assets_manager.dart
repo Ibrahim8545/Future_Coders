@@ -20,6 +20,18 @@ abstract class ImageAssets{
   static const String imageArticleTwo ="$imagePath/imageArticleTwo.png";
   static const String imageBook ="$imagePath/imageBook.png";
   static const String writerImage ="$imagePath/writerImage.png";
+  static const String books ="$imagePath/books.png";
+  static const String challenges ="$imagePath/challenges.png";
+  static const String functions ="$imagePath/functions.png";
+  static const String games ="$imagePath/games.png";
+  static const String introProgramming ="$imagePath/introProgramming.png";
+  static const String oop ="$imagePath/oop.png";
+  static const String principlesPro ="$imagePath/principlesPro.png";
+  static const String projects ="$imagePath/projects.png";
+  static const String chess ="$imagePath/chess.png";
+  static const String memory ="$imagePath/memory.png";
+  static const String puzzel ="$imagePath/puzzel.png";
+  static const String scrabble ="$imagePath/scrabble.png";
 
 }
 

@@ -14,4 +14,7 @@ class Routes {
   static const String progressView = '/progressView';
   static const String articlesView = '/articlesView';
   static const String booksView = '/booksView';
+  static const String programmingView = '/programmingView';
+  static const String gamesView = '/gamesView';
+  static const String videoPlayerView = '/videoPlayerView';
 }
