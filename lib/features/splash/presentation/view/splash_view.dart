@@ -1,4 +1,5 @@
 import 'package:courseapp/config/routes/routes.dart';
+import 'package:courseapp/core/utils/color_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:courseapp/core/utils/assets_manager.dart';
 
@@ -16,18 +17,19 @@ class _SplashViewState extends State<SplashView> {
   int _currentIndex = 0;
 
   final List<Color> colors = [
-    Colors.purple,
-    Colors.orange,
-    Colors.blue,
-    Colors.green,
-    Colors.red,
-    Colors.teal,
-    Colors.deepPurple,
-    Colors.pink,
-    Colors.indigo,
-    Colors.cyan,
-    Colors.amber,
-    Colors.lightBlue,
+    ColorManager.primary700,
+    ColorManager.secondary400,
+   ColorManager.yellow200,
+    ColorManager.secondary400,
+   ColorManager.yellow200,
+    ColorManager.primary700,
+    ColorManager.primary700,
+    ColorManager.secondary400,
+   ColorManager.yellow200,
+    ColorManager.primary700,
+   ColorManager.yellow200,
+    ColorManager.primary700,
+    ColorManager.secondary400,
   ];
 
   @override
@@ -38,7 +40,7 @@ class _SplashViewState extends State<SplashView> {
 
   void animateText() async {
     for (int i = 0; i <= text.length; i++) {
-      await Future.delayed(const Duration(milliseconds: 180));
+      await Future.delayed(const Duration(milliseconds: 600));
       setState(() {
         _currentIndex = i;
       });
@@ -76,7 +78,8 @@ class _SplashViewState extends State<SplashView> {
                           color: text[index] == '\n'
                               ? Colors.transparent
                               : colors[index % colors.length],
-                          fontSize: 40,
+                          fontFamily: "Cherry Bomb",
+                          fontSize: 64,
                           fontWeight: FontWeight.w900,
                         ),
                       );

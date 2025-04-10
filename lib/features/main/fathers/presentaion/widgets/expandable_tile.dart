@@ -52,8 +52,8 @@ class _ExpandableTileState extends State<ExpandableTile> {
                   ),
                   SizedBox(width: 8.w),
                   Icon(
-                    isExpanded ? Icons.remove : Icons.add,
-                    color: isExpanded ? Colors.red : ColorManager.primary700,
+                    isExpanded ? Icons.keyboard_arrow_down : Icons.keyboard_arrow_up,
+                    color:  ColorManager.primary700,
                     size: 24.sp,
                   ),
                 ],
