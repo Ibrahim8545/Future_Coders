@@ -18,6 +18,7 @@ import 'package:courseapp/features/main/settings/presentation/views/favourite_vi
 import 'package:courseapp/features/main/settings/presentation/views/help_view.dart';
 import 'package:courseapp/features/main/settings/presentation/views/profile_view.dart';
 import 'package:courseapp/features/onboarding/prestatation/views/onbarding_view.dart';
+import 'package:courseapp/features/splash/presentation/view/splash_view.dart';
 import 'package:flutter/material.dart';
 
 class RouteGenerator {
@@ -25,6 +26,8 @@ class RouteGenerator {
     switch (settings.name) {
       case Routes.mainRoute:
         return MaterialPageRoute(builder: (_) => const MainLayout());
+        case Routes.splash:
+        return MaterialPageRoute(builder: (_) => const SplashView());
       case Routes.signIn:
         return MaterialPageRoute(builder: (_) => LoginPage());
       case Routes.signUp:

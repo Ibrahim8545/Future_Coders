@@ -34,6 +34,7 @@ abstract class ImageAssets{
   static const String scrabble ="$imagePath/scrabble.png";
   static const String exit ="$imagePath/exit.png";
   static const String redImg ="$imagePath/redImg.png";
+  static const String logo ="$imagePath/logo.png";
 
 }
 

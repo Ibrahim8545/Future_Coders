@@ -19,7 +19,7 @@ class CoursesApp extends StatelessWidget {
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         onGenerateRoute: RouteGenerator.getRoute,
-        initialRoute: Routes.onBoardingScreen,
+        initialRoute: Routes.splash,
       ),
     );
   }

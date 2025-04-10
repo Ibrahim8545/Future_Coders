@@ -1,5 +1,6 @@
 class Routes {
   static const String mainRoute = "/main";
+  static const String splash = "/splash";
   static const String signIn = '/signIn';
   static const String signUp = '/signUp';
   static const String forgetPassword = '/forgetPassword';
