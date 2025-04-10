@@ -1,8 +1,8 @@
-import 'package:animated_text_kit/animated_text_kit.dart';
-import 'package:courseapp/core/utils/assets_manager.dart';
-import 'package:courseapp/core/utils/color_manager.dart';
-import 'package:courseapp/core/utils/styles_manager.dart';
+import 'package:courseapp/config/routes/routes.dart';
 import 'package:flutter/material.dart';
+import 'package:courseapp/core/utils/assets_manager.dart';
+
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class SplashView extends StatefulWidget {
   const SplashView({super.key});
@@ -12,55 +12,86 @@ class SplashView extends StatefulWidget {
 }
 
 class _SplashViewState extends State<SplashView> {
+  final String text = 'Future\nCoders';
+  int _currentIndex = 0;
+
+  final List<Color> colors = [
+    Colors.purple,
+    Colors.orange,
+    Colors.blue,
+    Colors.green,
+    Colors.red,
+    Colors.teal,
+    Colors.deepPurple,
+    Colors.pink,
+    Colors.indigo,
+    Colors.cyan,
+    Colors.amber,
+    Colors.lightBlue,
+  ];
+
   @override
-  // void initState() {
-  //   super.initState();
-  //   Future.delayed(const Duration(seconds: 4),() {
-  //     Navigator.pushReplacementNamed(context, Routes.signIn);
-  //   },);
-  // }
+  void initState() {
+    super.initState();
+    animateText();
+  }
+
+  void animateText() async {
+    for (int i = 0; i <= text.length; i++) {
+      await Future.delayed(const Duration(milliseconds: 180));
+      setState(() {
+        _currentIndex = i;
+      });
+    }
+
+    Navigator.pushReplacementNamed(context, Routes.onBoardingScreen);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
-      body: Center(
-        child: Stack(
-          children: [
-            Image.asset(ImageAssets.curveImage),
-            Column(
+      body: Stack(
+        children: [
+          Positioned(
+            bottom: -11.w,
+            left: 100,
+            child: Image.asset('assets/images/curvebottom.png'),
+          ),
+          Center(
+            child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                // Image
                 SizedBox(
                   height: 250,
-                  child: Image.asset(ImageAssets.logo), // Add your image to assets
+                  child: Image.asset(ImageAssets.logo),
                 ),
                 const SizedBox(height: 30),
-
-                // Animated "Future Coders" text
-                DefaultTextStyle(
-                  style: const TextStyle(
-                    fontSize: 70.0,
-                    fontWeight: FontWeight.bold,
-                  ),
-                  child: AnimatedTextKit(
-                    animatedTexts: [
-                      TypewriterAnimatedText(
-                        textStyle: getBoldStyle(color: ColorManager.primary700,fontSize: 40),
-                        curve: Curves.bounceIn,
-                        'Future Coders',
-                        speed: const Duration(microseconds: 800),
-                      ),
-
-                    ],
-                    totalRepeatCount: 1,
+                RichText(
+                  textAlign: TextAlign.center,
+                  text: TextSpan(
+                    children: List.generate(_currentIndex, (index) {
+                      return TextSpan(
+                        text: text[index],
+                        style: TextStyle(
+                          color: text[index] == '\n'
+                              ? Colors.transparent
+                              : colors[index % colors.length],
+                          fontSize: 40,
+                          fontWeight: FontWeight.w900,
+                        ),
+                      );
+                    }),
                   ),
                 ),
-
               ],
             ),
-          ],
-        ),
+          ),
+          Positioned(
+            top: 0,
+            left: 0,
+            child: Image.asset(ImageAssets.curveImage),
+          ),
+        ],
       ),
     );
   }
