@@ -18,6 +18,7 @@ import 'package:courseapp/features/main/settings/presentation/views/favourite_vi
 import 'package:courseapp/features/main/settings/presentation/views/help_view.dart';
 import 'package:courseapp/features/main/settings/presentation/views/profile_view.dart';
 import 'package:courseapp/features/onboarding/prestatation/views/onbarding_view.dart';
+import 'package:courseapp/features/quiz/presentation/views/quiz_home.dart';
 import 'package:courseapp/features/splash/presentation/view/splash_view.dart';
 import 'package:flutter/material.dart';
 
@@ -26,7 +27,7 @@ class RouteGenerator {
     switch (settings.name) {
       case Routes.mainRoute:
         return MaterialPageRoute(builder: (_) => const MainLayout());
-        case Routes.splash:
+      case Routes.splash:
         return MaterialPageRoute(builder: (_) => const SplashView());
       case Routes.signIn:
         return MaterialPageRoute(builder: (_) => LoginPage());
@@ -48,28 +49,30 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (_) => const RepasswordScreen());
       case Routes.onBoardingScreen:
         return MaterialPageRoute(builder: (_) => const OnBoardindScreen());
+      case Routes.quiz:
+        return MaterialPageRoute(builder: (_) => const QuizPage());
+
       case Routes.confirmChangePasswordSplashScreen:
         return MaterialPageRoute(
             builder: (_) => const ConfirmChangePasswordSplashScreen());
-        case Routes.articlesView:
+      case Routes.articlesView:
+        return MaterialPageRoute(builder: (_) => const FullArticlesView());
+      case Routes.booksView:
+        return MaterialPageRoute(builder: (_) => const FullBooksView());
+      case Routes.programmingView:
+        return MaterialPageRoute(builder: (_) => const ProgrammingView());
+      case Routes.gamesView:
+        return MaterialPageRoute(builder: (_) => GamesView());
+      case Routes.videoPlayerView:
+        final youtubeUrl = settings.arguments as String;
         return MaterialPageRoute(
-            builder: (_) => const FullArticlesView());
-        case Routes.booksView:
-        return MaterialPageRoute(
-            builder: (_) => const FullBooksView());
-        case Routes.programmingView:
-        return MaterialPageRoute(
-            builder: (_) => const ProgrammingView());
-        case Routes.gamesView:
-        return MaterialPageRoute(
-            builder: (_) =>  GamesView());
-        case Routes.videoPlayerView:
-          final youtubeUrl = settings.arguments as String;
-        return MaterialPageRoute(
-            builder: (_) =>  VideoPlayerView(youtubeUrl: youtubeUrl,),);
-        case Routes.progressView:
-        return MaterialPageRoute(
-            builder: (_) => const ProgressView());
+          builder: (_) => VideoPlayerView(
+            youtubeUrl: youtubeUrl,
+          ),
+        );
+      case Routes.progressView:
+        return MaterialPageRoute(builder: (_) => const ProgressView());
+
       default:
         return unDefinedRoute();
     }

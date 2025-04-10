@@ -45,10 +45,11 @@ class LoginPage extends StatelessWidget {
                 onTap: () {
                   Navigator.pushNamed(context, Routes.forgetPassword);
                 },
-                child:  Text(
+                child: Text(
                   'هل نسيت كلمه السر؟',
                   textAlign: TextAlign.end,
-                  style:getMediumStyle(color: ColorManager.black500,fontSize: 16),
+                  style: getMediumStyle(
+                      color: ColorManager.black500, fontSize: 16),
                 ),
               ),
               SizedBox(height: 10.h),
@@ -56,7 +57,7 @@ class LoginPage extends StatelessWidget {
                 color: const Color(0xff0A638F),
                 onTap: () {
                   //if (formKey.currentState!.validate()) {}
-                  Navigator.pushNamed(context, Routes.mainRoute);
+                  Navigator.pushNamed(context, Routes.quiz);
                 },
                 text: 'تسجيل الدخول ',
               ),
@@ -72,7 +73,9 @@ class LoginPage extends StatelessWidget {
                   SizedBox(
                     width: 4.w,
                   ),
-                   Text('او',style: getBoldStyle(color: ColorManager.black500,fontSize: 16)),
+                  Text('او',
+                      style: getBoldStyle(
+                          color: ColorManager.black500, fontSize: 16)),
                   SizedBox(
                     width: 4.w,
                   ),
@@ -105,15 +108,15 @@ class LoginPage extends StatelessWidget {
                     onTap: () {
                       Navigator.pushNamed(context, Routes.signUp);
                     },
-                    child:  Text(
+                    child: Text(
                       '  انشاء حساب',
-                      style: getBoldStyle(color: ColorManager.primary700,fontSize: 16),
+                      style: getBoldStyle(
+                          color: ColorManager.primary700, fontSize: 16),
                     ),
                   ),
-                   Text(
-                    '  ليس لديك حساب جديد؟',
-                      style:getBoldStyle(color: ColorManager.black500,fontSize: 16)
-                  ),
+                  Text('  ليس لديك حساب جديد؟',
+                      style: getBoldStyle(
+                          color: ColorManager.black500, fontSize: 16)),
                   const SizedBox(width: 10),
                 ],
               ),
