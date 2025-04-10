@@ -6,7 +6,8 @@ import 'package:flutter/material.dart';
 
 BottomNavigationBar buildBottomNavigationBar(int currentIndex,changeSelectedIndex) {
   return BottomNavigationBar(
-    selectedLabelStyle: getBoldStyle(color: const Color(0xff0A638F),fontSize: 16),
+    selectedItemColor: ColorManager.primary700,
+    selectedLabelStyle: getMediumStyle(color: ColorManager.primary700,fontSize: 16),
     currentIndex: currentIndex,
     onTap: changeSelectedIndex,
     type: BottomNavigationBarType.fixed,
@@ -15,11 +16,11 @@ BottomNavigationBar buildBottomNavigationBar(int currentIndex,changeSelectedInde
     showUnselectedLabels: false,
     elevation: 10,
     items: [
-      CustomBottomNavBarItem(IconsAssets.icHome, "Home",),
-      CustomBottomNavBarItem(IconsAssets.icCourses, "Courses"),
-      CustomBottomNavBarItem(IconsAssets.icFathers, "Fathers"),
-      CustomBottomNavBarItem(IconsAssets.icCommunity, "Community"),
-      CustomBottomNavBarItem(IconsAssets.icProfile, "Settings"),
+      CustomBottomNavBarItem(IconsAssets.icHome, "الرئيسية",),
+      CustomBottomNavBarItem(IconsAssets.icCourses, "كورساتي"),
+      CustomBottomNavBarItem(IconsAssets.icFathers, "الاباء"),
+      CustomBottomNavBarItem(IconsAssets.icCommunity, "مجتمعنا"),
+      CustomBottomNavBarItem(IconsAssets.icProfile, "الشخصية"),
 
     ],
   );

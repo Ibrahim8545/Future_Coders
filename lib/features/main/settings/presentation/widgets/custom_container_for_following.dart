@@ -5,10 +5,11 @@ import 'package:flutter/material.dart';
 
 class CustomContainerForFollowing extends StatelessWidget {
   const CustomContainerForFollowing(
-      {super.key, required this.title, required this.subTitle});
+      {super.key, required this.title, required this.subTitle, required this.color});
 
   final String title;
   final String subTitle;
+  final Color color;
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +17,7 @@ class CustomContainerForFollowing extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: AppPadding.p20),
       height: AppSize.s87,
       decoration: BoxDecoration(
-        color: ColorManager.secondary100,
+        color: color,
         borderRadius: BorderRadius.circular(AppSize.s8),
       ),
       child: Column(
