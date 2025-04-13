@@ -1,11 +1,13 @@
+import 'package:courseapp/config/routes/routes.dart';
+import 'package:courseapp/core/utils/color_manager.dart';
+import 'package:courseapp/core/utils/styles_manager.dart';
 import 'package:courseapp/features/quiz/presentation/bloc/quiz_bloc.dart';
 import 'package:courseapp/features/quiz/presentation/bloc/quiz_event.dart';
 import 'package:courseapp/features/quiz/presentation/bloc/quiz_state.dart';
-import 'package:courseapp/features/quiz/presentation/views/splash_quiz.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
 import 'package:courseapp/core/injectable.dart' as di;
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class QuizPage extends StatelessWidget {
   const QuizPage({super.key});
@@ -14,9 +16,11 @@ class QuizPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text(
+        title: Text(
           'اختبار البرمجة',
-          style: TextStyle(fontWeight: FontWeight.bold),
+          style: getBoldStyle(
+            color: ColorManager.black500,
+          ),
         ),
         centerTitle: true,
       ),
@@ -33,10 +37,7 @@ class QuizPage extends StatelessWidget {
                   state.isAnswered) {
                 // Navigate to home page after a delay
                 Future.delayed(const Duration(seconds: 1), () {
-                  Navigator.of(context).pushReplacement(
-                    MaterialPageRoute(
-                        builder: (context) => const SplashQuizScreen()),
-                  );
+                  Navigator.pushNamedAndRemoveUntil(context, Routes.mainRoute, (route) => false,);
                 });
               }
             }
@@ -75,32 +76,36 @@ class QuizPage extends StatelessWidget {
               children: [
                 Text(
                   'السؤال ${state.currentQuestionIndex + 1} من 5',
-                  style: const TextStyle(fontSize: 16),
+                  style: getMediumStyle(
+                      color: ColorManager.black500, fontSize: 16.sp),
                 ),
                 Text(
                   currentLevel.levelTitle,
-                  style: const TextStyle(
-                      fontSize: 16, fontWeight: FontWeight.bold),
+                  style: getMediumStyle(
+                      color: ColorManager.black500, fontSize: 16.sp),
                 ),
               ],
             ),
 
             // Progress indicators
-            Container(
-              margin: const EdgeInsets.symmetric(vertical: 20),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: List.generate(
-                  5,
-                  (index) => Container(
-                    width: MediaQuery.of(context).size.width / 7,
-                    height: 8,
-                    margin: const EdgeInsets.symmetric(horizontal: 2),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(4),
-                      color: index <= state.currentQuestionIndex
-                          ? Colors.blue.shade700
-                          : Colors.blue.shade200,
+            Directionality(
+              textDirection: TextDirection.rtl,
+              child: Container(
+                margin: const EdgeInsets.symmetric(vertical: 20),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: List.generate(
+                    5,
+                    (index) => Container(
+                      width: MediaQuery.of(context).size.width / 7,
+                      height: 16,
+                      margin: const EdgeInsets.symmetric(horizontal: 2),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(9),
+                        color: index <= state.currentQuestionIndex
+                            ? ColorManager.primary700
+                            : ColorManager.primary700,
+                      ),
                     ),
                   ),
                 ),
@@ -110,16 +115,19 @@ class QuizPage extends StatelessWidget {
             const SizedBox(height: 40),
 
             // Question
-            Text(
-              '${state.currentQuestionIndex + 1} - ${currentQuestion.question}',
-              textAlign: TextAlign.center,
-              style: const TextStyle(
-                fontSize: 18,
-                fontWeight: FontWeight.bold,
+            Directionality(
+              textDirection: TextDirection.rtl,
+              child: Text(
+                '${state.currentQuestionIndex + 1} - ${currentQuestion.question}',
+                textAlign: TextAlign.start,
+                style: getMediumStyle(
+                  color: ColorManager.black500,
+                  fontSize: 22,
+                ),
               ),
             ),
 
-            const SizedBox(height: 30),
+            SizedBox(height: 30.h),
 
             // Options
             ...List.generate(
@@ -145,18 +153,16 @@ class QuizPage extends StatelessWidget {
                             : Colors.grey.shade300,
                         width: state.isAnswered &&
                                 state.selectedOptionIndex == index
-                            ? 2
-                            : 1,
+                            ? 2.5
+                            : 1.5,
                       ),
                       borderRadius: BorderRadius.circular(8),
                     ),
-                    child: Text(
-                      currentQuestion.options[index],
-                      textAlign: TextAlign.center,
-                      style: const TextStyle(
-                        fontSize: 16,
-                      ),
-                    ),
+                    child: Text(currentQuestion.options[index],
+                        textAlign: TextAlign.center,
+                        style: getMediumStyle(
+                          color: ColorManager.black500,
+                        )),
                   ),
                 ),
               ),
@@ -174,12 +180,16 @@ class QuizPage extends StatelessWidget {
                       onPressed: () =>
                           context.read<QuizBloc>().add(PreviousQuestion()),
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.white,
-                        foregroundColor: Colors.blue,
-                        side: const BorderSide(color: Colors.blue),
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(8)),
+                        backgroundColor: ColorManager.white,
+                        side: BorderSide(color: ColorManager.primary700),
                         padding: const EdgeInsets.symmetric(vertical: 12),
                       ),
-                      child: const Text('السابق'),
+                      child: Text(
+                        'السابق',
+                        style: getMediumStyle(color: ColorManager.black500),
+                      ),
                     ),
                   ),
                 if (state.currentQuestionIndex > 0 ||
@@ -191,11 +201,16 @@ class QuizPage extends StatelessWidget {
                         ? () => context.read<QuizBloc>().add(NextQuestion())
                         : null,
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.blue,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(8)),
+                      backgroundColor: ColorManager.primary700,
                       foregroundColor: Colors.white,
                       padding: const EdgeInsets.symmetric(vertical: 12),
                     ),
-                    child: const Text('التالي'),
+                    child: Text(
+                      'التالي',
+                      style: getMediumStyle(color: ColorManager.white),
+                    ),
                   ),
                 ),
               ],

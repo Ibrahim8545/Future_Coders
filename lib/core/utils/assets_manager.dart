@@ -35,6 +35,9 @@ abstract class ImageAssets{
   static const String exit ="$imagePath/exit.png";
   static const String redImg ="$imagePath/redImg.png";
   static const String logo ="$imagePath/logo.png";
+  static const String avatars ="$imagePath/Avatars.png";
+  static const String solveProblem ="$imagePath/solveProblem.png";
+  static const String eventsImg ="$imagePath/eventsImg.png";
 
 }
 
@@ -60,6 +63,11 @@ abstract class IconsAssets{
   static const String _iClockIc = "$iconsPath/iClockic.png";
   static const String _BULBCIcon = "$iconsPath/BULBCIcon.png";
   static const String _whiteFav = "$iconsPath/whiteFav.png";
+  static const String _followingIc = "$iconsPath/followingIc.png";
+  static const String _userAddIc = "$iconsPath/userAddIc.png";
+  static const String _likeIc = "$iconsPath/likeIc.png";
+  static const String _shareIc = "$iconsPath/shareIc.png";
+  static const String _commentIc = "$iconsPath/commentIc.png";
 
   static String get arrowBack => _arrowBack;
   static String get editProfile => _editProfile;
@@ -82,4 +90,9 @@ abstract class IconsAssets{
   static String get iClockIc => _iClockIc;
   static String get BULBCIcon => _BULBCIcon;
   static String get whiteFav => _whiteFav;
+  static String get followingIc => _followingIc;
+  static String get userAddIc => _userAddIc;
+  static String get likeIc => _likeIc;
+  static String get shareIc => _shareIc;
+  static String get commentIc => _commentIc;
 }

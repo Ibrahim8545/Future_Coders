@@ -11,7 +11,7 @@ class SplashView extends StatefulWidget {
   State<SplashView> createState() => _SplashViewState();
 }
 
-class _SplashViewState extends State<SplashView> {
+class _SplashViewState extends State<SplashView> with TickerProviderStateMixin {
   final String word1 = 'Future';
   final String word2 = 'Coders';
   int _currentIndex = 0;
@@ -23,12 +23,12 @@ class _SplashViewState extends State<SplashView> {
     ColorManager.secondary400,
     ColorManager.yellow200,
     ColorManager.primary700,
-    ColorManager.primary700,
     ColorManager.secondary400,
     ColorManager.yellow200,
     ColorManager.primary700,
     ColorManager.yellow200,
     ColorManager.primary700,
+    ColorManager.secondary400,
   ];
 
   @override
@@ -36,10 +36,17 @@ class _SplashViewState extends State<SplashView> {
     super.initState();
     animateText();
   }
-
+  late final AnimationController _controller = AnimationController(
+    duration: const Duration(seconds: 1),
+    vsync: this,
+  )..repeat(reverse: true,count: 2);
+  late final Animation<Offset> _offsetAnimation = Tween<Offset>(
+    begin: Offset.zero,
+    end: const Offset(-0.6, 0.0),
+  ).animate(CurvedAnimation(parent: _controller, curve: Curves.elasticIn));
   void animateText() async {
     for (int i = 0; i <= word1.length; i++) {
-      await Future.delayed(const Duration(milliseconds: 400));
+      await Future.delayed(const Duration(milliseconds:1300));
       setState(() {
         _currentIndex = i;
       });
@@ -67,7 +74,9 @@ class _SplashViewState extends State<SplashView> {
               children: [
                 SizedBox(
                   height: 250,
-                  child: Image.asset(ImageAssets.logo),
+                  child: SlideTransition(
+                    position: _offsetAnimation,
+                      child: Image.asset(ImageAssets.logo)),
                 ),
                 const SizedBox(height: 30),
                 Column(

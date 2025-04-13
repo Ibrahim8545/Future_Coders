@@ -57,7 +57,7 @@ class LoginPage extends StatelessWidget {
                 color: const Color(0xff0A638F),
                 onTap: () {
                   //if (formKey.currentState!.validate()) {}
-                  Navigator.pushNamed(context, Routes.quiz);
+                  Navigator.pushReplacementNamed(context, Routes.quiz);
                 },
                 text: 'تسجيل الدخول ',
               ),

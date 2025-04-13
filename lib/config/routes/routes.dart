@@ -19,4 +19,5 @@ class Routes {
   static const String gamesView = '/gamesView';
   static const String videoPlayerView = '/videoPlayerView';
   static const String quiz = '/quiz';
+  static const String splashQuiz = '/splashQuiz';
 }

@@ -8,7 +8,6 @@ import 'package:courseapp/features/auth/prestation/screens/signup_screen.dart';
 import 'package:courseapp/features/main/cources/presentation/views/progress_view.dart';
 import 'package:courseapp/features/main/fathers/presentaion/views/full_articles_view.dart';
 import 'package:courseapp/features/main/fathers/presentaion/views/full_books_view.dart';
-import 'package:courseapp/features/main/home/model/course_model.dart';
 import 'package:courseapp/features/main/home/presentation/views/games_view.dart';
 import 'package:courseapp/features/main/home/presentation/views/programming_view.dart';
 import 'package:courseapp/features/main/home/presentation/views/video_player_view.dart';
@@ -19,6 +18,7 @@ import 'package:courseapp/features/main/settings/presentation/views/help_view.da
 import 'package:courseapp/features/main/settings/presentation/views/profile_view.dart';
 import 'package:courseapp/features/onboarding/prestatation/views/onbarding_view.dart';
 import 'package:courseapp/features/quiz/presentation/views/quiz_home.dart';
+import 'package:courseapp/features/quiz/presentation/views/splash_quiz.dart';
 import 'package:courseapp/features/splash/presentation/view/splash_view.dart';
 import 'package:flutter/material.dart';
 
@@ -63,6 +63,8 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (_) => const ProgrammingView());
       case Routes.gamesView:
         return MaterialPageRoute(builder: (_) => GamesView());
+        case Routes.splashQuiz:
+        return MaterialPageRoute(builder: (_) => const SplashQuizScreen());
       case Routes.videoPlayerView:
         final youtubeUrl = settings.arguments as String;
         return MaterialPageRoute(

@@ -1,4 +1,6 @@
 import 'package:courseapp/config/routes/routes.dart';
+import 'package:courseapp/core/utils/color_manager.dart';
+import 'package:courseapp/core/utils/styles_manager.dart';
 import 'package:flutter/material.dart';
 
 class SplashQuizScreen extends StatefulWidget {
@@ -11,9 +13,8 @@ class SplashQuizScreen extends StatefulWidget {
 class _SplashQuizScreenState extends State<SplashQuizScreen> {
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
-    Future.delayed(const Duration(seconds: 3), () {
+    Future.delayed(const Duration(seconds: 2), () {
       Navigator.pushReplacementNamed(context, Routes.mainRoute);
     });
   }
@@ -22,31 +23,31 @@ class _SplashQuizScreenState extends State<SplashQuizScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('الصفحة الرئيسية'),
+        title: Text(
+          'الصفحة الرئيسية',
+          style: getMediumStyle(color: ColorManager.black500),
+        ),
         centerTitle: true,
       ),
-      body: const Center(
-        child: const Column(
+      body: Center(
+        child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: const [
-            Icon(
+          children: [
+            const Icon(
               Icons.check_circle,
               color: Colors.green,
               size: 80,
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             Text(
               'تم إكمال الاختبار بنجاح!',
-              style: TextStyle(
-                fontSize: 24,
-                fontWeight: FontWeight.bold,
-              ),
+              style: getBoldStyle(color: ColorManager.black500),
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             Text(
               'أهلاً بك في تطبيق التعلم',
-              style: TextStyle(
-                fontSize: 18,
+              style: getMediumStyle(
+                color: ColorManager.black500,
               ),
             ),
           ],
