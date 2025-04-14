@@ -1,13 +1,24 @@
+import 'dart:io';
 import 'package:courseapp/core/utils/assets_manager.dart';
 import 'package:courseapp/core/utils/color_manager.dart';
 import 'package:courseapp/core/utils/styles_manager.dart';
 import 'package:courseapp/features/main/settings/presentation/widgets/custom_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:image_picker/image_picker.dart';
 
-class PublishPostsView extends StatelessWidget {
+class PublishPostsView extends StatefulWidget {
   const PublishPostsView({super.key});
 
+  @override
+  State<PublishPostsView> createState() => _PublishPostsViewState();
+}
+
+class _PublishPostsViewState extends State<PublishPostsView> {
+  TextEditingController controller = TextEditingController();
+    String newText = "";
+    bool isWriting = false;
+  File? _selectedImages;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,15 +46,22 @@ class PublishPostsView extends StatelessWidget {
                     SizedBox(
                       width: 149.w,
                     ),
-                    Container(
-                      padding: const EdgeInsets.all(8),
-                      decoration: BoxDecoration(
-                        color: ColorManager.primary700,
-                        borderRadius: BorderRadius.circular(5.r),
-                      ),
-                      child: Text(
-                        "نشر",
-                        style: getMediumStyle(color: ColorManager.white),
+                    GestureDetector(
+                      onTap: (){
+                        setState(() {
+                          newText = controller.text;
+                        });
+                      },
+                      child: Container(
+                        padding: const EdgeInsets.all(8),
+                        decoration: BoxDecoration(
+                          color: newText.length==0?ColorManager.grey1:ColorManager.primary700,
+                          borderRadius: BorderRadius.circular(5.r),
+                        ),
+                        child: Text(
+                          "نشر",
+                          style: getMediumStyle(color: ColorManager.white),
+                        ),
                       ),
                     ),
                   ],
@@ -55,7 +73,19 @@ class PublishPostsView extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 16.0,vertical: 16),
             child: Column(
               children: [
-                const Expanded(child: SizedBox()),
+                SizedBox(height: 130.h,),
+                 Expanded(
+                   child: Directionality(
+                     textDirection: TextDirection.rtl,
+                     child: Column(
+                      children: [
+                         Text(textAlign: TextAlign.start,newText,style: getMediumStyle(color: ColorManager.black500),),
+                        const SizedBox(height: 20,),
+                        _selectedImages != null?Image.file(_selectedImages!):const SizedBox(),
+                      ],
+                     ),
+                   ),
+                 ),
                 Row(
                   children: [
                     CircleAvatar(
@@ -67,8 +97,13 @@ class PublishPostsView extends StatelessWidget {
                     ),
                     SizedBox(width: 10.w,),
                     Expanded(
-                      child:
-                      TextFormField(
+                      child: TextFormField(
+                       onChanged: (value) {
+                         setState(() {
+                           newText = value;
+                         });
+                       },
+                        controller: controller,
                         textDirection: TextDirection.rtl,
                         cursorColor: ColorManager.primary700,
                         decoration: InputDecoration(
@@ -82,11 +117,15 @@ class PublishPostsView extends StatelessWidget {
 
                               IconButton(
                                 icon: const Icon(Icons.link, color: Colors.grey),
-                                onPressed: () {}, // Add functionality here
+                                onPressed: () {
+                                  _pickImageFromGallery();
+                                }, // Add functionality here
                               ),
                               IconButton(
                                 icon: const Icon(Icons.camera_alt, color: Colors.grey),
-                                onPressed: () {}, // Add functionality here
+                                onPressed: () {
+                                  _pickImageFromCamera();
+                                }, // Add functionality here
                               ),
                             ],
                           ),
@@ -99,7 +138,8 @@ class PublishPostsView extends StatelessWidget {
                       ),
                     )
                   ],
-                )
+                ),
+
               ],
             ),
           ),
@@ -107,5 +147,20 @@ class PublishPostsView extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  Future _pickImageFromGallery()async{
+   final returnedImage =  await ImagePicker().pickImage(source: ImageSource.gallery);
+   if(returnedImage==null)return;
+   setState(() {
+     _selectedImages = File(returnedImage.path);
+   });
+  }
+  Future _pickImageFromCamera()async{
+   final returnedImage =  await ImagePicker().pickImage(source: ImageSource.camera);
+   if(returnedImage==null)return;
+   setState(() {
+     _selectedImages = File(returnedImage.path);
+   });
   }
 }
