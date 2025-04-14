@@ -5,6 +5,7 @@ import 'package:courseapp/features/auth/prestation/screens/login_screen.dart';
 import 'package:courseapp/features/auth/prestation/screens/otp_screen.dart';
 import 'package:courseapp/features/auth/prestation/screens/repassword_screen.dart';
 import 'package:courseapp/features/auth/prestation/screens/signup_screen.dart';
+import 'package:courseapp/features/main/community/presentaion/views/publish_posts_view.dart';
 import 'package:courseapp/features/main/cources/presentation/views/progress_view.dart';
 import 'package:courseapp/features/main/fathers/presentaion/views/full_articles_view.dart';
 import 'package:courseapp/features/main/fathers/presentaion/views/full_books_view.dart';
@@ -65,6 +66,8 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (_) => GamesView());
         case Routes.splashQuiz:
         return MaterialPageRoute(builder: (_) => const SplashQuizScreen());
+        case Routes.publishPosts:
+        return MaterialPageRoute(builder: (_) => const PublishPostsView());
       case Routes.videoPlayerView:
         final youtubeUrl = settings.arguments as String;
         return MaterialPageRoute(

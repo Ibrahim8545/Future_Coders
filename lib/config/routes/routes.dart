@@ -20,4 +20,5 @@ class Routes {
   static const String videoPlayerView = '/videoPlayerView';
   static const String quiz = '/quiz';
   static const String splashQuiz = '/splashQuiz';
+  static const String publishPosts = '/publishPosts';
 }

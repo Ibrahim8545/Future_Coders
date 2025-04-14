@@ -37,7 +37,7 @@ class QuizPage extends StatelessWidget {
                   state.isAnswered) {
                 // Navigate to home page after a delay
                 Future.delayed(const Duration(seconds: 1), () {
-                  Navigator.pushNamedAndRemoveUntil(context, Routes.mainRoute, (route) => false,);
+                  Navigator.pushNamedAndRemoveUntil(context, Routes.splashQuiz,(route) => false,);
                 });
               }
             }

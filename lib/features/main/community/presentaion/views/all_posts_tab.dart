@@ -1,3 +1,4 @@
+import 'package:courseapp/features/main/community/presentaion/widgets/custom_channels_container.dart';
 import 'package:courseapp/features/main/community/presentaion/widgets/custom_future_event_container.dart';
 import 'package:courseapp/features/main/community/presentaion/widgets/custom_questions_container.dart';
 import 'package:courseapp/features/main/settings/presentation/widgets/custom_row_text_favourite_view.dart';
@@ -31,13 +32,12 @@ class _AllPostsTabState extends State<AllPostsTab> {
             CustomRowTextFavouriteView(title: "الأحداث القادمة"),
             CustomFutureEventContainer(),
             CustomRowTextFavouriteView(title: "القنوات"),
+            CustomChannelsContainer(),
           ],
         ),
       ),
     );
   }
 }
-
-
 
 

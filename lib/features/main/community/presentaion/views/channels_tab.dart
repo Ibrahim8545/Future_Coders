@@ -1,3 +1,4 @@
+import 'package:courseapp/features/main/community/presentaion/widgets/custom_channels_container.dart';
 import 'package:flutter/material.dart';
 
 class ChannelsTab extends StatelessWidget {
@@ -6,8 +7,13 @@ class ChannelsTab extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const SingleChildScrollView(
-      child: Center(
-        child: Text("Channels"),
+      child: Padding(
+        padding: EdgeInsets.symmetric(horizontal: 16.0),
+        child: Column(
+          children: [
+            CustomChannelsContainer(),
+          ],
+        ),
       ),
     );
   }
