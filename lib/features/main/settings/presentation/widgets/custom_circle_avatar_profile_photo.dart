@@ -1,11 +1,19 @@
+import 'dart:io';
+
 import 'package:courseapp/core/utils/assets_manager.dart';
 import 'package:courseapp/core/utils/color_manager.dart';
 import 'package:flutter/material.dart';
 
-class CustomCircleAvatarProfilePhoto extends StatelessWidget {
-  const CustomCircleAvatarProfilePhoto({
-    super.key,
+class CustomCircleAvatarProfilePhoto extends StatefulWidget {
+   CustomCircleAvatarProfilePhoto({
+    super.key, this.selectedImage,
   });
+  File? selectedImage;
+  @override
+  State<CustomCircleAvatarProfilePhoto> createState() => _CustomCircleAvatarProfilePhotoState();
+}
+
+class _CustomCircleAvatarProfilePhotoState extends State<CustomCircleAvatarProfilePhoto> {
 
   @override
   Widget build(BuildContext context) {
@@ -15,9 +23,7 @@ class CustomCircleAvatarProfilePhoto extends StatelessWidget {
         CircleAvatar(
           radius: 65,
           backgroundColor: ColorManager.orange,
-          backgroundImage: const AssetImage(
-            ImageAssets.kidsImg,
-          ),
+          child: widget.selectedImage!=null?Image.file(widget.selectedImage!,):Image.asset(ImageAssets.kidsImg),
         ),
         Positioned(
           bottom: 3,

@@ -4,9 +4,15 @@ import 'package:courseapp/features/main/home/presentation/widget/course_card.dar
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class CustomCoursesSection extends StatelessWidget {
-  CustomCoursesSection({super.key});
+class CustomCoursesSection extends StatefulWidget {
+  const CustomCoursesSection({super.key});
 
+  @override
+  State<CustomCoursesSection> createState() => _CustomCoursesSectionState();
+}
+
+class _CustomCoursesSectionState extends State<CustomCoursesSection> {
+  int selectedIndex =0;
   final List<CourseModel> allCourses = [
     CourseModel(
       title: "اساسيات البرمجة",
@@ -16,24 +22,43 @@ class CustomCoursesSection extends StatelessWidget {
       imagePath: ImageAssets.completeImage,
     ),
     CourseModel(
-      title: "اساسيات البرمجة",
+      title: "تصميم التطبيقات والمواقع",
+      teacher: "م.أحمد علي",
+      lessons: 6,
+      duration: "  30 دقيقة",
+      imagePath: ImageAssets.notCompleteImg,
+    ),
+    CourseModel(
+      title: "برمجة الالعاب",
       teacher: "م.أحمد علي",
       lessons: 4,
       duration: "  30 دقيقة",
-      imagePath: ImageAssets.completeImage,
+      imagePath: ImageAssets.notComplete,
+    ),
+    CourseModel(
+      title: "التفكير المنطقي",
+      teacher: "م.أحمد علي",
+      lessons: 4,
+      duration: "  30 دقيقة",
+      imagePath: ImageAssets.technologicImg,
     ),
   ];
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 220.h,
+      height: MediaQuery.of(context).size.height*.33,
       child: ListView.builder(
+        reverse: true,
         shrinkWrap: false,
         scrollDirection: Axis.horizontal,
-        itemCount: allCourses.length, // for example, repeat course 4 times
+        itemCount: allCourses.length,
         itemBuilder: (context, index) {
-          return CourseCard(course: allCourses[index]);
+          return CourseCard(course: allCourses[index], isSelected: selectedIndex==index, onTap: () {
+            setState(() {
+              selectedIndex =index;
+            });
+          },);
         },
       ),
     );

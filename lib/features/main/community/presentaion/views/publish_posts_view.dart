@@ -17,7 +17,6 @@ class PublishPostsView extends StatefulWidget {
 class _PublishPostsViewState extends State<PublishPostsView> {
   TextEditingController controller = TextEditingController();
     String newText = "";
-    bool isWriting = false;
   File? _selectedImages;
   @override
   Widget build(BuildContext context) {

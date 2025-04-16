@@ -78,7 +78,7 @@ class HomeTabBody extends StatelessWidget {
           const CustomRowTextFavouriteView(title: "الاقسام"),
           const CustomSectionWidget(),
           const CustomRowTextFavouriteView(title: "استكشف دوراتنا"),
-          CustomCoursesSection()
+          const CustomCoursesSection()
         ],
       ),
     );

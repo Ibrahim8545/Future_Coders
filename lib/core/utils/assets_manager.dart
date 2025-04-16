@@ -41,6 +41,9 @@ abstract class ImageAssets{
   static const String countImg ="$imagePath/countImg.png";
   static const String perfil ="$imagePath/perfil.png";
   static const String mic ="$imagePath/mic.png";
+  static const String challengeOne ="$imagePath/challengeOne.png";
+  static const String challengeTwo ="$imagePath/challengeTwo.png";
+  static const String challengeThree ="$imagePath/challengeThree.png";
 
 }
 

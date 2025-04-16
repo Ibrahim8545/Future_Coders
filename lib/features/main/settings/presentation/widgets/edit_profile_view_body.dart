@@ -1,13 +1,22 @@
+import 'dart:io';
 import 'package:courseapp/core/utils/values_manager.dart';
 import 'package:courseapp/features/auth/prestation/widget/custom_buttom.dart';
 import 'package:courseapp/features/main/settings/presentation/widgets/custom_app_bar.dart';
 import 'package:courseapp/features/main/settings/presentation/widgets/custom_circle_avatar_profile_photo.dart';
 import 'package:courseapp/features/main/settings/presentation/widgets/custom_profile_name_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 import 'custom_app_bar_title.dart';
 
-class EditProfileViewBody extends StatelessWidget {
+class EditProfileViewBody extends StatefulWidget {
   const EditProfileViewBody({super.key});
+
+  @override
+  State<EditProfileViewBody> createState() => _EditProfileViewBodyState();
+}
+
+class _EditProfileViewBodyState extends State<EditProfileViewBody> {
+   File? selectedImage;
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +31,12 @@ class EditProfileViewBody extends StatelessWidget {
             SizedBox(
               height: MediaQuery.of(context).size.height * .2,
             ),
-            const CustomCircleAvatarProfilePhoto(),
+            GestureDetector(
+              onTap: (){
+                pickImageFromGallery();
+              },
+              child:  CustomCircleAvatarProfilePhoto(selectedImage: selectedImage,),
+            ),
             const SizedBox(height: AppSize.s24),
             const CustomProfileNameWidget(),
             const SizedBox(height: AppSize.s40),
@@ -47,5 +61,14 @@ class EditProfileViewBody extends StatelessWidget {
         const CustomAppBar(),
       ],
     );
+  }
+
+  Future pickImageFromGallery() async {
+    final returnedImage =
+        await ImagePicker().pickImage(source: ImageSource.gallery);
+    if (returnedImage == null) return;
+    setState(() {
+      selectedImage = File(returnedImage.path);
+    });
   }
 }

@@ -65,6 +65,8 @@ class _CustomSectionWidgetState extends State<CustomSectionWidget> {
             Navigator.pushNamed(context, Routes.programmingView);
           }else if(selectedIndex==1){
             Navigator.pushNamed(context, Routes.gamesView);
+          }else if(selectedIndex==2){
+            Navigator.pushNamed(context, Routes.challengesView);
           }
         });
       },

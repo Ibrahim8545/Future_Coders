@@ -8,10 +8,12 @@ class CustomButton extends StatelessWidget {
       required this.onTap,
       required this.text,
        this.color,
+        this.textColor,
       re});
   String text;
   VoidCallback onTap;
   Color? color;
+  Color? textColor;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -26,7 +28,7 @@ class CustomButton extends StatelessWidget {
             child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(text, style: getMediumStyle(color: ColorManager.white)),
+            Text(text, style: getMediumStyle(color: textColor??ColorManager.white)),
           ],
         )),
       ),

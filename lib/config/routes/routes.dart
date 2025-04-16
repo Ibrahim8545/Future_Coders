@@ -21,4 +21,5 @@ class Routes {
   static const String quiz = '/quiz';
   static const String splashQuiz = '/splashQuiz';
   static const String publishPosts = '/publishPosts';
+  static const String challengesView = '/challengesView';
 }
