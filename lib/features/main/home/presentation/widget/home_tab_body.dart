@@ -17,68 +17,78 @@ class HomeTabBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.end,
+      child: Stack(
         children: [
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                Image.asset('assets/images/hi.png'),
-                SizedBox(width: 8.w),
-                Text(
-                  'مرحبا',
-                  style: getBoldStyle(color: Colors.black),
-                ),
-              ],
-            ),
-          ),
-          SizedBox(
-            height: 4.h,
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16.0),
-            child: Text(
-              'هل انت جاهز للتعلم اليوم ؟',
-              style: getLightStyle(color: const Color(0xff999999))
-                  .copyWith(fontSize: 14.sp),
-            ),
-          ),
-          SizedBox(
-            height: 10.h,
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16.0),
-            child: CustomTextField(
-              suffixIcon: const Icon(Icons.search),
-              prefixIcon: const Icon(Icons.speaker),
-              hint: '...ابحث عن الدورات, المعلمين',
-            ),
-          ),
-          SizedBox(
-            height: 10.h,
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16.0),
-            child: Container(
-              padding: const EdgeInsets.all(7.0),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(12),
-                border: Border.all(
-                  color: const Color(0xff000000).withOpacity(0.25),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: [
+              SizedBox(height: 70.h,),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    Image.asset('assets/images/hi.png'),
+                    SizedBox(width: 8.w),
+                    Text(
+                      'مرحبا',
+                      style: getBoldStyle(color: Colors.black),
+                    ),
+                  ],
                 ),
               ),
-              child: const CustomSectionCourse(),
-            ),
+              SizedBox(
+                height: 4.h,
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                child: Text(
+                  'هل انت جاهز للتعلم اليوم ؟',
+                  style: getLightStyle(color: const Color(0xff999999))
+                      .copyWith(fontSize: 14.sp),
+                ),
+              ),
+              SizedBox(
+                height: 10.h,
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                child: CustomTextField(
+                  suffixIcon: const Icon(Icons.search),
+                  prefixIcon: const Icon(Icons.speaker),
+                  hint: '...ابحث عن الدورات, المعلمين',
+                ),
+              ),
+              SizedBox(
+                height: 10.h,
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                child: Container(
+                  padding: const EdgeInsets.all(7.0),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(12),
+                    border: Border.all(
+                      color: const Color(0xff000000).withOpacity(0.25),
+                    ),
+                  ),
+                  child: const CustomSectionCourse(),
+                ),
+              ),
+              SizedBox(
+                height: 16.h,
+              ),
+              const CustomRowTextFavouriteView(title: "الاقسام"),
+              const CustomSectionWidget(),
+              const CustomRowTextFavouriteView(title: "استكشف دوراتنا"),
+              const CustomCoursesSection()
+            ],
           ),
-          SizedBox(
-            height: 16.h,
-          ),
-          const CustomRowTextFavouriteView(title: "الاقسام"),
-          const CustomSectionWidget(),
-          const CustomRowTextFavouriteView(title: "استكشف دوراتنا"),
-          const CustomCoursesSection()
+          Image.asset(ImageAssets.curveImage),
+          Padding(
+            padding:  EdgeInsets.only(top: 30.0.h),
+            child: Image.asset(IconsAssets.notificationIcon),
+          )
         ],
       ),
     );

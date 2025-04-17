@@ -34,7 +34,7 @@ class CustomSectionCourse extends StatelessWidget {
           ),
           GestureDetector(
             onTap: (){
-              Navigator.pushNamed(context, Routes.programmingView);
+              Navigator.pushNamed(context, Routes.payment);
             },
             child: Container(
               width: 200,

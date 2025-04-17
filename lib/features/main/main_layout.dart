@@ -15,7 +15,7 @@ class MainLayout extends StatefulWidget {
 }
 
 class _MainLayoutState extends State<MainLayout> {
-  int currentIndex = 4;
+  int currentIndex = 0;
   List<Widget> tabs = [
     const HomeTab(),
     const CoursesTab(),

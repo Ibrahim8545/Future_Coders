@@ -6,8 +6,8 @@ class HomeTab extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SafeArea(child: HomeTabBody()),
+    return const Scaffold(
+      body: HomeTabBody(),
     );
   }
 }

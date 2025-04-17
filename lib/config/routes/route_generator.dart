@@ -19,6 +19,11 @@ import 'package:courseapp/features/main/settings/presentation/views/favourite_vi
 import 'package:courseapp/features/main/settings/presentation/views/help_view.dart';
 import 'package:courseapp/features/main/settings/presentation/views/profile_view.dart';
 import 'package:courseapp/features/onboarding/prestatation/views/onbarding_view.dart';
+import 'package:courseapp/features/payment/data/model/payment_option.dart';
+import 'package:courseapp/features/payment/presentation/views/payment_view.dart';
+import 'package:courseapp/features/payment/presentation/views/selected_payment_view.dart';
+import 'package:courseapp/features/payment/presentation/views/thank_you_view.dart';
+import 'package:courseapp/features/payment/presentation/widgets/payment_view_body.dart';
 import 'package:courseapp/features/quiz/presentation/views/quiz_home.dart';
 import 'package:courseapp/features/quiz/presentation/views/splash_quiz.dart';
 import 'package:courseapp/features/splash/presentation/view/splash_view.dart';
@@ -65,10 +70,26 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (_) => const ProgrammingView());
       case Routes.gamesView:
         return MaterialPageRoute(builder: (_) => GamesView());
+        case Routes.payment:
+        return MaterialPageRoute(builder: (_) => const PaymentView());
         case Routes.splashQuiz:
         return MaterialPageRoute(builder: (_) => const SplashQuizScreen());
+        case Routes.thankYouView:
+        return MaterialPageRoute(builder: (_) => const ThankYouView());
         case Routes.publishPosts:
         return MaterialPageRoute(builder: (_) => const PublishPostsView());
+      case Routes.selectedPayment:
+        final args = settings.arguments as PaymentOption;
+        if (args is PaymentOption) {
+          return MaterialPageRoute(
+            builder: (_) => SelectedPaymentScreen(option: args),
+          );
+        }
+        return MaterialPageRoute(
+          builder: (_) => const Scaffold(
+            body: Center(child: Text('No payment option passed')),
+          ),
+        );
         case Routes.challengesView:
         return MaterialPageRoute(builder: (_) => const ChallengesView());
       case Routes.videoPlayerView:

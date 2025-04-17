@@ -22,4 +22,7 @@ class Routes {
   static const String splashQuiz = '/splashQuiz';
   static const String publishPosts = '/publishPosts';
   static const String challengesView = '/challengesView';
+  static const String payment = '/payment';
+  static const String selectedPayment = '/selectedPayment';
+  static const String thankYouView = '/thankYouView';
 }
