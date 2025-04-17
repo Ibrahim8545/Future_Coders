@@ -36,17 +36,20 @@ class _SplashViewState extends State<SplashView> with TickerProviderStateMixin {
     super.initState();
     animateText();
   }
+
   late final AnimationController _controller = AnimationController(
     duration: const Duration(seconds: 1),
     vsync: this,
-  )..repeat(reverse: true,count: 2);
+  )..repeat(
+      reverse: true,
+    );
   late final Animation<Offset> _offsetAnimation = Tween<Offset>(
     begin: Offset.zero,
     end: const Offset(-0.6, 0.0),
   ).animate(CurvedAnimation(parent: _controller, curve: Curves.elasticIn));
   void animateText() async {
     for (int i = 0; i <= word1.length; i++) {
-      await Future.delayed(const Duration(milliseconds:1300));
+      await Future.delayed(const Duration(milliseconds: 1300));
       setState(() {
         _currentIndex = i;
       });
@@ -55,6 +58,7 @@ class _SplashViewState extends State<SplashView> with TickerProviderStateMixin {
   }
 
   dispose() {
+    _controller.dispose();
     super.dispose();
   }
 
@@ -75,7 +79,7 @@ class _SplashViewState extends State<SplashView> with TickerProviderStateMixin {
                 SizedBox(
                   height: 250,
                   child: SlideTransition(
-                    position: _offsetAnimation,
+                      position: _offsetAnimation,
                       child: Image.asset(ImageAssets.logo)),
                 ),
                 const SizedBox(height: 30),

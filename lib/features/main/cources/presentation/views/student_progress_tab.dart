@@ -4,7 +4,7 @@ import 'package:courseapp/features/main/cources/model/chart_model.dart';
 import 'package:courseapp/features/main/cources/presentation/widgets/custom_cartesian_chart.dart';
 import 'package:courseapp/features/main/cources/presentation/widgets/custom_progress_row.dart';
 import 'package:flutter/material.dart';
-import 'package:syncfusion_flutter_charts/charts.dart';
+
 class StudentProgressTab extends StatefulWidget {
   const StudentProgressTab({super.key});
 
@@ -14,7 +14,7 @@ class StudentProgressTab extends StatefulWidget {
 
 class _StudentProgressTabState extends State<StudentProgressTab> {
   late List<ChartData> data;
-  late TooltipBehavior _tooltip;
+  // late TooltipBehavior _tooltip;
 
   @override
   void initState() {
@@ -24,7 +24,7 @@ class _StudentProgressTabState extends State<StudentProgressTab> {
       ChartData('11 - 20 سبتمبر', 45, ColorManager.primary700),
       ChartData('1-10 سبتمبر', 30, ColorManager.secondary300),
     ];
-    _tooltip = TooltipBehavior(enable: true);
+    // _tooltip = TooltipBehavior(enable: true);
     super.initState();
   }
 
@@ -44,12 +44,11 @@ class _StudentProgressTabState extends State<StudentProgressTab> {
           ),
         ),
         Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8),
-          child: CustomCartesianChart(tooltip: _tooltip, data: data),
-        ),
+            padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8),
+            child: Text('No data')
+            // CustomCartesianChart(tooltip: _tooltip, data: data),
+            ),
       ],
     );
   }
 }
-
-

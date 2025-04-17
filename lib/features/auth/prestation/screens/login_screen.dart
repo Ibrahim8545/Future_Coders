@@ -1,10 +1,13 @@
 import 'package:courseapp/config/routes/routes.dart';
 import 'package:courseapp/core/utils/color_manager.dart';
 import 'package:courseapp/core/utils/styles_manager.dart';
+import 'package:courseapp/features/auth/data/login_imp.dart';
+import 'package:courseapp/features/auth/domain/login_use_case.dart';
 import 'package:courseapp/features/auth/prestation/widget/custom_buttom.dart';
 import 'package:courseapp/features/auth/prestation/widget/custom_textfield.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
 class LoginPage extends StatelessWidget {
   static const String routeName = 'LoginPage';
@@ -56,8 +59,32 @@ class LoginPage extends StatelessWidget {
               CustomButton(
                 color: const Color(0xff0A638F),
                 onTap: () {
-                  //if (formKey.currentState!.validate()) {}
-                  Navigator.pushReplacementNamed(context, Routes.quiz);
+                  onTap:
+                  () async {
+                    if (formKey.currentState!.validate()) {
+                      final repository =
+                          AuthRepositoryImpl(client: Supabase.instance.client);
+                      final loginUseCase = LoginUseCase(repository);
+
+                      try {
+                        final userId = await loginUseCase.execute(
+                          emailController.text.trim(),
+                          passwordController.text.trim(),
+                        );
+                        if (userId != null) {
+                          Navigator.pushReplacementNamed(context, Routes.quiz);
+                        }
+                      } catch (e) {
+                        showDialog(
+                          context: context,
+                          builder: (_) => AlertDialog(
+                            title: Text('Login Failed'),
+                            content: Text(e.toString()),
+                          ),
+                        );
+                      }
+                    }
+                  };
                 },
                 text: 'تسجيل الدخول ',
               ),
