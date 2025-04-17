@@ -44,6 +44,11 @@ abstract class ImageAssets{
   static const String challengeOne ="$imagePath/challengeOne.png";
   static const String challengeTwo ="$imagePath/challengeTwo.png";
   static const String challengeThree ="$imagePath/challengeThree.png";
+  static const String credit ="$imagePath/credit.png";
+  static const String cash ="$imagePath/cash.png";
+  static const String vodafone ="$imagePath/vodafone.png";
+  static const String verifiedCheck ="$imagePath/verifiedCheck.png";
+  static const String verifiedCheckIcon ="$imagePath/verifiedCheckIcon.png";
 
 }
 
@@ -77,6 +82,8 @@ abstract class IconsAssets{
   static const String _micIc = "$iconsPath/micIc.png";
   static const String _cameraIc = "$iconsPath/cameraIc.png";
   static const String _linkIc= "$iconsPath/inkIc.png";
+  static const String _check= "$iconsPath/check.png";
+  static const String _checkSolid= "$iconsPath/CheckSolid.png";
 
   static String get arrowBack => _arrowBack;
   static String get editProfile => _editProfile;
@@ -107,4 +114,6 @@ abstract class IconsAssets{
   static String get micIc => _micIc;
   static String get cameraIc => _cameraIc;
   static String get inkIc => _linkIc;
+  static String get check => _check;
+  static String get checkSolid => _checkSolid;
 }

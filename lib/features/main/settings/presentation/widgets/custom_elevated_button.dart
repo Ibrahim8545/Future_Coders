@@ -27,6 +27,7 @@ class CustomElevatedButton extends StatelessWidget {
                     AppSize.s8,
                   )))),
           child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Image.asset(
                 IconsAssets.BULBCIcon,
