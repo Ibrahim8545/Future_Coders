@@ -2,7 +2,7 @@ import 'package:courseapp/config/routes/routes.dart';
 import 'package:courseapp/core/utils/color_manager.dart';
 import 'package:courseapp/core/utils/styles_manager.dart';
 import 'package:courseapp/features/auth/data/login_imp.dart';
-import 'package:courseapp/features/auth/domain/login_use_case.dart';
+import 'package:courseapp/features/auth/domain/use_case/login_use_case.dart';
 import 'package:courseapp/features/auth/prestation/widget/custom_buttom.dart';
 import 'package:courseapp/features/auth/prestation/widget/custom_textfield.dart';
 import 'package:flutter/material.dart';

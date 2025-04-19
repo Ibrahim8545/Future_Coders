@@ -1,4 +1,4 @@
-import 'package:courseapp/features/auth/domain/login_repo.dart';
+import 'package:courseapp/features/auth/domain/repo/login_repo.dart';
 
 class LoginUseCase {
   final AuthRepository repository;

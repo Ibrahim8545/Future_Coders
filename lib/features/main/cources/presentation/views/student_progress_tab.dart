@@ -1,7 +1,6 @@
 import 'package:courseapp/core/utils/color_manager.dart';
 import 'package:courseapp/core/utils/styles_manager.dart';
 import 'package:courseapp/features/main/cources/model/chart_model.dart';
-import 'package:courseapp/features/main/cources/presentation/widgets/custom_cartesian_chart.dart';
 import 'package:courseapp/features/main/cources/presentation/widgets/custom_progress_row.dart';
 import 'package:flutter/material.dart';
 
