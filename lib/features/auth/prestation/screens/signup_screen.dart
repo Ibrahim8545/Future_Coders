@@ -29,17 +29,20 @@ class SignUpScreen extends StatelessWidget {
     return Scaffold(
       body: BlocProvider(
         create: (context) => AuthCubit(
-            signUpUseCase: SignUpUseCase(AuthRepositoryImpl(
-                dataSource: SupabaseAuthDataSource(
-                    client: supabase.SupabaseClient(
-                        "https://dgmfnqctghiobzvnoonf.supabase.co",
-                        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRnbWZucWN0Z2hpb2J6dm5vb25mIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDQ5MTU5ODQsImV4cCI6MjA2MDQ5MTk4NH0.PueY4v3DaKGsni2Eeb6a0WR6KtWudClkmKu8bJbsq4g"))))),
+          signUpUseCase: SignUpUseCase(
+            AuthRepositoryImpl(
+              dataSource: SupabaseAuthDataSource(
+                client: supabase.Supabase.instance.client,
+              ),
+            ),
+          ),
+        ),
         child: BlocConsumer<AuthCubit, AuthState>(
           listener: (context, state) {
             if (state is AuthSuccess) {
               ScaffoldMessenger.of(context).showSnackBar(
                   const SnackBar(content: Text('تم إنشاء الحساب بنجاح')));
-              Navigator.pushNamed(context, Routes.otp);
+              Navigator.pushNamed(context, Routes.signIn);
             } else if (state is AuthError) {
               ScaffoldMessenger.of(context)
                   .showSnackBar(SnackBar(content: Text(state.message)));
