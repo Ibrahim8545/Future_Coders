@@ -1,7 +1,6 @@
 import 'package:courseapp/config/routes/routes.dart';
 import 'package:courseapp/core/utils/color_manager.dart';
 import 'package:courseapp/core/utils/styles_manager.dart';
-import 'package:courseapp/features/auth/data/data_source/signup_data_source.dart';
 import 'package:courseapp/features/auth/data/repo_imp/signup_repo_imp.dart';
 import 'package:courseapp/features/auth/domain/use_case/signup_usecase.dart';
 import 'package:courseapp/features/auth/prestation/manager/cubit/signup_bloc_cubit.dart';
@@ -31,9 +30,7 @@ class SignUpScreen extends StatelessWidget {
         create: (context) => AuthCubit(
           signUpUseCase: SignUpUseCase(
             AuthRepositoryImpl(
-              dataSource: SupabaseAuthDataSource(
-                client: supabase.Supabase.instance.client,
-              ),
+              client: supabase.Supabase.instance.client,
             ),
           ),
         ),
