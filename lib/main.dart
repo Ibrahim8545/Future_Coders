@@ -3,8 +3,14 @@ import 'package:courseapp/config/routes/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:courseapp/core/injectable.dart' as di;
+import 'package:supabase_flutter/supabase_flutter.dart';
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
+  await Supabase.initialize(
+    url: "https://dgmfnqctghiobzvnoonf.supabase.co",
+    anonKey:
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRnbWZucWN0Z2hpb2J6dm5vb25mIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDQ5MTU5ODQsImV4cCI6MjA2MDQ5MTk4NH0.PueY4v3DaKGsni2Eeb6a0WR6KtWudClkmKu8bJbsq4g",
+  );
   await di.init();
   runApp(const CoursesApp());
 }

@@ -32,12 +32,24 @@ class LoginPage extends StatelessWidget {
               ),
               const SizedBox(height: 20),
               CustomTextField(
+                validator: (value) {
+                  if (value == null || value.trim().isEmpty) {
+                    return 'ادخل البريد الالكتروني';
+                  }
+                  return null;
+                },
                 controller: emailController,
                 hint: 'ادخل بريدك الالكتروني',
                 text: 'Email must be not empty',
               ),
               SizedBox(height: 10.h),
               CustomTextField(
+                validator: (value) {
+                  if (value == null || value.trim().isEmpty) {
+                    return 'ادخل كلمه المرور';
+                  }
+                  return null;
+                },
                 controller: passwordController,
                 hint: 'ادخل كلمه المرور',
                 text: 'Password must be not empty',
@@ -58,9 +70,7 @@ class LoginPage extends StatelessWidget {
               SizedBox(height: 10.h),
               CustomButton(
                 color: const Color(0xff0A638F),
-                onTap: () {
-                  onTap:
-                  () async {
+                onTap: () async{
                     if (formKey.currentState!.validate()) {
                       final repository =
                           AuthRepositoryImpl(client: Supabase.instance.client);
@@ -84,8 +94,7 @@ class LoginPage extends StatelessWidget {
                         );
                       }
                     }
-                  };
-                },
+                  },
                 text: 'تسجيل الدخول ',
               ),
               SizedBox(height: 16.h),

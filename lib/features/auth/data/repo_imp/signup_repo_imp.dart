@@ -13,12 +13,13 @@ class AuthRepositoryImpl implements SignUPAuthRepo {
       required String email,
       required String password}) async {
     await dataSource.signUp(
-        username: firstName, email: email, password: password);
+      username: firstName,
+      email: email,
+      password: password,
+    );
+    throw Exception("please try again");
   }
 }
-
-
-
 
 //  @override
 //   Future<void> signUp(

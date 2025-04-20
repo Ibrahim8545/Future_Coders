@@ -21,6 +21,7 @@ class AuthCubit extends Cubit<AuthState> {
         password: password,
         confirmPassword: confirmPassword,
       );
+
       emit(AuthSuccess());
     } catch (e) {
       emit(AuthError(e.toString()));

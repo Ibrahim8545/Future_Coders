@@ -1,6 +1,9 @@
 import 'package:courseapp/config/routes/routes.dart';
 import 'package:courseapp/core/utils/color_manager.dart';
 import 'package:courseapp/core/utils/styles_manager.dart';
+import 'package:courseapp/features/auth/data/data_source/signup_data_source.dart';
+import 'package:courseapp/features/auth/data/repo_imp/signup_repo_imp.dart';
+import 'package:courseapp/features/auth/domain/use_case/signup_usecase.dart';
 import 'package:courseapp/features/auth/prestation/manager/cubit/signup_bloc_cubit.dart';
 import 'package:courseapp/features/auth/prestation/manager/cubit/signup_bloc_state.dart';
 import 'package:courseapp/features/auth/prestation/widget/custom_buttom.dart';
@@ -8,6 +11,7 @@ import 'package:courseapp/features/auth/prestation/widget/custom_textfield.dart'
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:supabase_flutter/supabase_flutter.dart' as supabase;
 
 class SignUpScreen extends StatelessWidget {
   SignUpScreen({super.key});
@@ -23,179 +27,187 @@ class SignUpScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: BlocConsumer<AuthCubit, AuthState>(
-        listener: (context, state) {
-          if (state is AuthSuccess) {
-            ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(content: Text('تم إنشاء الحساب بنجاح')));
-            Navigator.pushNamed(context, Routes.otp);
-          } else if (state is AuthError) {
-            ScaffoldMessenger.of(context)
-                .showSnackBar(SnackBar(content: Text(state.message)));
-          }
-        },
-        builder: (context, state) {
-          return Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 8.0),
-            child: Form(
-              key: formKey,
-              child: ListView(
-                children: [
-                  SizedBox(height: 45.h),
-                  Image.asset('assets/images/reqqq.jpg'),
-                  SizedBox(height: 20.h),
-                  const SizedBox(height: 20),
-                  CustomTextField(
-                    controller: firstNameController,
-                    hint: 'اسم الطالب',
-                    text: 'First Name must be not empty',
-                    validator: (value) {
-                      if (value == null || value.isEmpty) {
-                        return 'First Name must be not empty';
-                      }
-                      return null;
-                    },
-                  ),
-                  SizedBox(height: 14.h),
-                  CustomTextField(
-                    controller: emailController,
-                    hint: 'ادخل بريدك الالكتروني',
-                    text: 'Email must be not empty',
-                    validator: (value) {
-                      if (value == null || value.isEmpty) {
-                        return 'Email must be not empty';
-                      }
-                      if (!RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$')
-                          .hasMatch(value)) {
-                        return 'Please enter a valid email';
-                      }
-                      return null;
-                    },
-                  ),
-                  SizedBox(height: 14.h),
-                  CustomTextField(
-                    controller: passwordController,
-                    hint: 'ادخل كلمة المرور',
-                    text: 'Password must be not empty',
-                    obscureText: true,
-                    validator: (value) {
-                      if (value == null || value.isEmpty) {
-                        return 'Password must be not empty';
-                      }
-                      if (value.length < 6) {
-                        return 'Password should be at least 6 characters';
-                      }
-                      return null;
-                    },
-                  ),
-                  SizedBox(height: 14.h),
-                  CustomTextField(
-                    controller: confirmPasswordController,
-                    hint: 'تاكيد كلمة المرور',
-                    text: 'Password must be not empty',
-                    obscureText: true,
-                    validator: (value) {
-                      if (value == null || value.isEmpty) {
-                        return 'Please confirm your password';
-                      }
-                      if (value != passwordController.text) {
-                        return 'Passwords do not match';
-                      }
-                      return null;
-                    },
-                  ),
-                  SizedBox(height: 14.h),
-                  state is AuthLoading
-                      ? const Center(child: CircularProgressIndicator())
-                      : CustomButton(
-                          color: const Color(0xff0A638F),
+      body: BlocProvider(
+        create: (context) => AuthCubit(
+            signUpUseCase: SignUpUseCase(AuthRepositoryImpl(
+                dataSource: SupabaseAuthDataSource(
+                    client: supabase.SupabaseClient(
+                        "https://dgmfnqctghiobzvnoonf.supabase.co",
+                        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRnbWZucWN0Z2hpb2J6dm5vb25mIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDQ5MTU5ODQsImV4cCI6MjA2MDQ5MTk4NH0.PueY4v3DaKGsni2Eeb6a0WR6KtWudClkmKu8bJbsq4g"))))),
+        child: BlocConsumer<AuthCubit, AuthState>(
+          listener: (context, state) {
+            if (state is AuthSuccess) {
+              ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(content: Text('تم إنشاء الحساب بنجاح')));
+              Navigator.pushNamed(context, Routes.otp);
+            } else if (state is AuthError) {
+              ScaffoldMessenger.of(context)
+                  .showSnackBar(SnackBar(content: Text(state.message)));
+            }
+          },
+          builder: (context, state) {
+            return Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 8.0),
+              child: Form(
+                key: formKey,
+                child: ListView(
+                  children: [
+                    SizedBox(height: 45.h),
+                    Image.asset('assets/images/reqqq.jpg'),
+                    SizedBox(height: 20.h),
+                    const SizedBox(height: 20),
+                    CustomTextField(
+                      controller: firstNameController,
+                      hint: 'اسم الطالب',
+                      text: 'First Name must be not empty',
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return 'First Name must be not empty';
+                        }
+                        return null;
+                      },
+                    ),
+                    SizedBox(height: 14.h),
+                    CustomTextField(
+                      controller: emailController,
+                      hint: 'ادخل بريدك الالكتروني',
+                      text: 'Email must be not empty',
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return 'Email must be not empty';
+                        }
+                        if (!RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$')
+                            .hasMatch(value)) {
+                          return 'Please enter a valid email';
+                        }
+                        return null;
+                      },
+                    ),
+                    SizedBox(height: 14.h),
+                    CustomTextField(
+                      controller: passwordController,
+                      hint: 'ادخل كلمة المرور',
+                      text: 'Password must be not empty',
+                      obscureText: true,
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return 'Password must be not empty';
+                        }
+                        if (value.length < 6) {
+                          return 'Password should be at least 6 characters';
+                        }
+                        return null;
+                      },
+                    ),
+                    SizedBox(height: 14.h),
+                    CustomTextField(
+                      controller: confirmPasswordController,
+                      hint: 'تاكيد كلمة المرور',
+                      text: 'Password must be not empty',
+                      obscureText: true,
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return 'Please confirm your password';
+                        }
+                        if (value != passwordController.text) {
+                          return 'Passwords do not match';
+                        }
+                        return null;
+                      },
+                    ),
+                    SizedBox(height: 14.h),
+                    state is AuthLoading
+                        ? const Center(child: CircularProgressIndicator())
+                        : CustomButton(
+                            color: const Color(0xff0A638F),
+                            onTap: () {
+                              if (formKey.currentState!.validate()) {
+                                context.read<AuthCubit>().signUp(
+                                      firstName: firstNameController.text,
+                                      email: emailController.text,
+                                      password: passwordController.text,
+                                      confirmPassword:
+                                          confirmPasswordController.text,
+                                    );
+                              }
+                            },
+                            text: 'انشاء حساب',
+                          ),
+                    SizedBox(height: 10.h),
+                    Row(
+                      children: [
+                        const Expanded(
+                          child: Divider(
+                            color: Color(0xff999999),
+                            thickness: 1,
+                          ),
+                        ),
+                        SizedBox(width: 4.w),
+                        Text('او',
+                            style: getBoldStyle(
+                                color: ColorManager.black500, fontSize: 16)),
+                        SizedBox(width: 4.w),
+                        const Expanded(
+                          child: Divider(
+                            color: Color(0xff999999),
+                            thickness: 1,
+                          ),
+                        ),
+                      ],
+                    ),
+                    SizedBox(height: 10.h),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        InkWell(
                           onTap: () {
-                            if (formKey.currentState!.validate()) {
-                              context.read<AuthCubit>().signUp(
-                                    firstName: firstNameController.text,
-                                    email: emailController.text,
-                                    password: passwordController.text,
-                                    confirmPassword:
-                                        confirmPasswordController.text,
-                                  );
-                            }
+                            // Implement Google Sign-In
                           },
-                          text: 'انشاء حساب',
+                          child: Image.asset('assets/images/google.png'),
                         ),
-                  SizedBox(height: 10.h),
-                  Row(
-                    children: [
-                      const Expanded(
-                        child: Divider(
-                          color: Color(0xff999999),
-                          thickness: 1,
+                        SizedBox(width: 32.w),
+                        InkWell(
+                          onTap: () {
+                            // Implement Apple Sign-In
+                          },
+                          child: Image.asset('assets/images/apple.png'),
                         ),
-                      ),
-                      SizedBox(width: 4.w),
-                      Text('او',
+                        SizedBox(width: 32.w),
+                        InkWell(
+                          onTap: () {
+                            // Implement Facebook Sign-In
+                          },
+                          child: Image.asset('assets/images/face.png'),
+                        ),
+                      ],
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        InkWell(
+                          onTap: () {
+                            Navigator.pop(context);
+                          },
+                          child: Text(
+                            '   تسجيل دخول',
+                            style: getBoldStyle(
+                                color: ColorManager.primary700, fontSize: 16),
+                          ),
+                        ),
+                        Text(
+                          ' هل لديك حساب بالفعل؟',
                           style: getBoldStyle(
-                              color: ColorManager.black500, fontSize: 16)),
-                      SizedBox(width: 4.w),
-                      const Expanded(
-                        child: Divider(
-                          color: Color(0xff999999),
-                          thickness: 1,
+                              color: ColorManager.black500, fontSize: 16),
                         ),
-                      ),
-                    ],
-                  ),
-                  SizedBox(height: 10.h),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      InkWell(
-                        onTap: () {
-                          // Implement Google Sign-In
-                        },
-                        child: Image.asset('assets/images/google.png'),
-                      ),
-                      SizedBox(width: 32.w),
-                      InkWell(
-                        onTap: () {
-                          // Implement Apple Sign-In
-                        },
-                        child: Image.asset('assets/images/apple.png'),
-                      ),
-                      SizedBox(width: 32.w),
-                      InkWell(
-                        onTap: () {
-                          // Implement Facebook Sign-In
-                        },
-                        child: Image.asset('assets/images/face.png'),
-                      ),
-                    ],
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      InkWell(
-                        onTap: () {
-                          Navigator.pop(context);
-                        },
-                        child: Text(
-                          '   تسجيل دخول',
-                          style: getBoldStyle(
-                              color: ColorManager.primary700, fontSize: 16),
-                        ),
-                      ),
-                      Text(
-                        ' هل لديك حساب بالفعل؟',
-                        style: getBoldStyle(
-                            color: ColorManager.black500, fontSize: 16),
-                      ),
-                      const SizedBox(width: 10),
-                    ],
-                  ),
-                ],
+                        const SizedBox(width: 10),
+                      ],
+                    ),
+                  ],
+                ),
               ),
-            ),
-          );
-        },
+            );
+          },
+        ),
       ),
     );
   }
