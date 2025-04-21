@@ -50,8 +50,8 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (_) => const HelpView());
       case Routes.forgetPassword:
         return MaterialPageRoute(builder: (_) => const ForgetPassword());
-      case Routes.otp:
-        return MaterialPageRoute(builder: (_) => const OtpScreen());
+      // case Routes.otp:
+      //   return MaterialPageRoute(builder: (_) =>  OtpScreen());
       case Routes.repassword:
         return MaterialPageRoute(builder: (_) => const RepasswordScreen());
       case Routes.onBoardingScreen:
@@ -70,13 +70,13 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (_) => const ProgrammingView());
       case Routes.gamesView:
         return MaterialPageRoute(builder: (_) => GamesView());
-        case Routes.payment:
+      case Routes.payment:
         return MaterialPageRoute(builder: (_) => const PaymentView());
-        case Routes.splashQuiz:
+      case Routes.splashQuiz:
         return MaterialPageRoute(builder: (_) => const SplashQuizScreen());
-        case Routes.thankYouView:
+      case Routes.thankYouView:
         return MaterialPageRoute(builder: (_) => const ThankYouView());
-        case Routes.publishPosts:
+      case Routes.publishPosts:
         return MaterialPageRoute(builder: (_) => const PublishPostsView());
       case Routes.selectedPayment:
         final args = settings.arguments as PaymentOption;
@@ -90,7 +90,7 @@ class RouteGenerator {
             body: Center(child: Text('No payment option passed')),
           ),
         );
-        case Routes.challengesView:
+      case Routes.challengesView:
         return MaterialPageRoute(builder: (_) => const ChallengesView());
       case Routes.videoPlayerView:
         final youtubeUrl = settings.arguments as String;
