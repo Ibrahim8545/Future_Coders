@@ -82,15 +82,13 @@ class RouteGenerator {
       case Routes.thankYouView:
         return MaterialPageRoute(builder: (_) => const ThankYouView());
       case Routes.publishPosts:
-<<<<<<< HEAD
-        return MaterialPageRoute(builder: (_) => const PublishPostsView());
-=======
         return MaterialPageRoute(
           builder: (_) => BlocProvider(
-            create: (context) => PostCubit(AddPostUseCase(PostRepositoryImpl(PostRemoteDataSource(Supabase.instance.client)))),
+              create: (context) => PostCubit(AddPostUseCase(PostRepositoryImpl(
+                  PostRemoteDataSource(Supabase.instance.client)))),
               child: const PublishPostsView()),
         );
->>>>>>> 41abe4f0554cb4e560da2aab41d7d57ebfe75b42
+
       case Routes.selectedPayment:
         final args = settings.arguments as PaymentOption;
         if (args is PaymentOption) {

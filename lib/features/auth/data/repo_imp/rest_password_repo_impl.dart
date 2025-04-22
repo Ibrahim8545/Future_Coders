@@ -9,7 +9,8 @@ class SupabaseAuthRepository implements AuthRepo {
   @override
   Future<void> sendPasswordResetEmail(String email) async {
     try {
-      await _supabaseClient.auth.resetPasswordForEmail(email);
+      await _supabaseClient.auth.resetPasswordForEmail(email,
+          redirectTo: 'courseapp://reset-password');
     } catch (e) {
       throw Exception('فشل إرسال بريد إعادة تعيين كلمة المرور: $e');
     }
