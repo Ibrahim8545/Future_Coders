@@ -2,7 +2,7 @@ import 'package:courseapp/config/routes/routes.dart';
 import 'package:courseapp/features/auth/prestation/screens/confirn_change_password.dart';
 import 'package:courseapp/features/auth/prestation/screens/forget_passsword_screen.dart';
 import 'package:courseapp/features/auth/prestation/screens/login_screen.dart';
-import 'package:courseapp/features/auth/prestation/screens/otp_screen.dart';
+
 import 'package:courseapp/features/auth/prestation/screens/repassword_screen.dart';
 import 'package:courseapp/features/auth/prestation/screens/signup_screen.dart';
 import 'package:courseapp/features/main/community/data/data_source/post_remote_data_source.dart';
