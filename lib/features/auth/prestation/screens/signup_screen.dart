@@ -19,22 +19,23 @@ class SignUpScreen extends StatelessWidget {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
   final TextEditingController confirmPasswordController =
-      TextEditingController();
+  TextEditingController();
 
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
+    final authRepository = AuthRepositoryImpl(
+      client: supabase.Supabase.instance.client,
+    );
+
     return Scaffold(
       body: BlocProvider(
         create: (context) => AuthCubit(
-          signUpUseCase: SignUpUseCase(
-            AuthRepositoryImpl(
-              client: supabase.Supabase.instance.client,
-            ),
-          ),
+          signUpUseCase: SignUpUseCase(authRepository),
+          authRepository: authRepository,
         ),
-        child: BlocConsumer<AuthCubit, AuthState>(
+        child: BlocConsumer<AuthCubit, AppAuthState>(
           listener: (context, state) {
             if (state is AuthSuccess) {
               ScaffoldMessenger.of(context).showSnackBar(
@@ -59,10 +60,10 @@ class SignUpScreen extends StatelessWidget {
                     CustomTextField(
                       controller: firstNameController,
                       hint: 'اسم الطالب',
-                      text: 'First Name must be not empty',
+                      text: 'First Name must not be empty',
                       validator: (value) {
                         if (value == null || value.isEmpty) {
-                          return 'First Name must be not empty';
+                          return 'First Name must not be empty';
                         }
                         return null;
                       },
@@ -71,10 +72,10 @@ class SignUpScreen extends StatelessWidget {
                     CustomTextField(
                       controller: emailController,
                       hint: 'ادخل بريدك الالكتروني',
-                      text: 'Email must be not empty',
+                      text: 'Email must not be empty',
                       validator: (value) {
                         if (value == null || value.isEmpty) {
-                          return 'Email must be not empty';
+                          return 'Email must not be empty';
                         }
                         if (!RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$')
                             .hasMatch(value)) {
@@ -87,11 +88,11 @@ class SignUpScreen extends StatelessWidget {
                     CustomTextField(
                       controller: passwordController,
                       hint: 'ادخل كلمة المرور',
-                      text: 'Password must be not empty',
+                      text: 'Password must not be empty',
                       obscureText: true,
                       validator: (value) {
                         if (value == null || value.isEmpty) {
-                          return 'Password must be not empty';
+                          return 'Password must not be empty';
                         }
                         if (value.length < 6) {
                           return 'Password should be at least 6 characters';
@@ -103,7 +104,7 @@ class SignUpScreen extends StatelessWidget {
                     CustomTextField(
                       controller: confirmPasswordController,
                       hint: 'تاكيد كلمة المرور',
-                      text: 'Password must be not empty',
+                      text: 'Password must not be empty',
                       obscureText: true,
                       validator: (value) {
                         if (value == null || value.isEmpty) {
@@ -119,20 +120,20 @@ class SignUpScreen extends StatelessWidget {
                     state is AuthLoading
                         ? const Center(child: CircularProgressIndicator())
                         : CustomButton(
-                            color: const Color(0xff0A638F),
-                            onTap: () {
-                              if (formKey.currentState!.validate()) {
-                                context.read<AuthCubit>().signUp(
-                                      firstName: firstNameController.text,
-                                      email: emailController.text,
-                                      password: passwordController.text,
-                                      confirmPassword:
-                                          confirmPasswordController.text,
-                                    );
-                              }
-                            },
-                            text: 'انشاء حساب',
-                          ),
+                      color: const Color(0xff0A638F),
+                      onTap: () {
+                        if (formKey.currentState!.validate()) {
+                          context.read<AuthCubit>().signUp(
+                            firstName: firstNameController.text,
+                            email: emailController.text,
+                            password: passwordController.text,
+                            confirmPassword:
+                            confirmPasswordController.text,
+                          );
+                        }
+                      },
+                      text: 'انشاء حساب',
+                    ),
                     SizedBox(height: 10.h),
                     Row(
                       children: [
@@ -162,13 +163,16 @@ class SignUpScreen extends StatelessWidget {
                         InkWell(
                           onTap: () {
                             // Implement Google Sign-In
+                            if (state is! AuthLoading) {
+                              context.read<AuthCubit>().signInWithGoogle();
+                            }
                           },
                           child: Image.asset('assets/images/google.png'),
                         ),
                         SizedBox(width: 32.w),
                         InkWell(
                           onTap: () {
-                            // Implement Apple Sign-In
+                            // Implement Apple Sign-In (not included in this implementation)
                           },
                           child: Image.asset('assets/images/apple.png'),
                         ),
@@ -176,6 +180,9 @@ class SignUpScreen extends StatelessWidget {
                         InkWell(
                           onTap: () {
                             // Implement Facebook Sign-In
+                            if (state is! AuthLoading) {
+                              context.read<AuthCubit>().signInWithFacebook();
+                            }
                           },
                           child: Image.asset('assets/images/face.png'),
                         ),

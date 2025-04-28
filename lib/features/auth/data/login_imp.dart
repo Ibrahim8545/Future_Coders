@@ -1,10 +1,10 @@
 import 'package:courseapp/features/auth/domain/repo/login_repo.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
-class AuthRepositoryImpl implements AuthRepository {
+class AuthLoginRepositoryImpl implements AuthRepository {
   final SupabaseClient client;
 
-  AuthRepositoryImpl({required this.client});
+  AuthLoginRepositoryImpl({required this.client});
 
   @override
   Future<String> signInWithEmail(String email, String password) async {

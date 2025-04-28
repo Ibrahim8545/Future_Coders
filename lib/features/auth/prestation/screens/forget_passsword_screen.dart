@@ -1,12 +1,13 @@
 import 'package:courseapp/config/routes/routes.dart';
 import 'package:courseapp/core/utils/assets_manager.dart';
+import 'package:courseapp/core/utils/color_manager.dart';
+import 'package:courseapp/core/utils/styles_manager.dart';
 import 'package:courseapp/features/auth/data/repo_imp/rest_password_repo_impl.dart';
 import 'package:courseapp/features/auth/domain/use_case/reset_paa_use_case.dart';
 import 'package:courseapp/features/auth/prestation/manager/reset_passord_cubit/reset_pass_cubit.dart';
 import 'package:courseapp/features/auth/prestation/manager/reset_passord_cubit/reset_pass_state.dart';
 import 'package:courseapp/features/auth/prestation/screens/otp_screen.dart';
 import 'package:courseapp/features/auth/prestation/widget/custom_buttom.dart';
-
 import 'package:courseapp/features/auth/prestation/widget/custom_textfield.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -36,12 +37,13 @@ class ForgetPassword extends StatelessWidget {
           final emailController = TextEditingController();
 
           return Scaffold(
+            resizeToAvoidBottomInset: false,
             body: Center(
               child: Stack(
                 children: [
                   Positioned(
                     bottom: -11.w,
-                    left: 100,
+                    left: 100.w,
                     child: Image.asset('assets/images/curvebottom.png'),
                   ),
                   Padding(
@@ -49,22 +51,16 @@ class ForgetPassword extends StatelessWidget {
                     child: Column(
                       children: [
                         SizedBox(height: 160.h),
-                        const Text(
+                         Text(
                           'نسيت كلمه المرور',
-                          style: TextStyle(
-                            fontSize: 24,
-                            fontWeight: FontWeight.w700,
-                          ),
+                          style: getBoldStyle(color: ColorManager.black500,fontSize: 22),
                         ),
                         SizedBox(height: 16.h),
                         Image.asset('assets/images/man thinking avatar.png'),
                         SizedBox(height: 16.h),
-                        const Text(
+                         Text(
                           'ادخل بريدك الالكتروني',
-                          style: TextStyle(
-                            fontSize: 24,
-                            fontWeight: FontWeight.w700,
-                          ),
+                          style: getBoldStyle(color: ColorManager.black500,fontSize: 22),
                         ),
                         SizedBox(height: 14.h),
                         CustomTextField(

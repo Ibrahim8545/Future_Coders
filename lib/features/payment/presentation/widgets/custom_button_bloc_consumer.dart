@@ -45,12 +45,11 @@ class CustomButtonBlocConsumer extends StatelessWidget {
                 .makePayment(
                 paymentIntentInputModel:
                 paymentIntentInputModel);
-            // if ((formKey.currentState as FormState)
-            //     .validate()) {
-            //
-            // } else {
-            //   debugPrint("Form not valid. Show errors.");
-            // }
+            if ((formKey.currentState as FormState)
+                .validate()) {
+            } else {
+              debugPrint("Form not valid. Show errors.");
+            }
           },
           text: "ادفع",
           color: ColorManager.primary700,

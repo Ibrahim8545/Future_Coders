@@ -1,3 +1,4 @@
+import 'package:courseapp/config/routes/routes.dart';
 import 'package:courseapp/core/utils/assets_manager.dart';
 import 'package:courseapp/core/utils/color_manager.dart';
 import 'package:courseapp/core/utils/styles_manager.dart';
@@ -87,7 +88,9 @@ class ThankYouViewBody extends StatelessWidget {
                 textDirection: TextDirection.ltr,
                 child: CustomElevatedButton(
                   title: "ابدا الان",
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.pushReplacementNamed(context, Routes.programmingView);
+                  },
                   color: ColorManager.primary700,
                   textColor: ColorManager.white,
                 ),

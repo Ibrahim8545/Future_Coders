@@ -68,156 +68,154 @@ class QuizPage extends StatelessWidget {
     return SafeArea(
       child: Padding(
         padding: const EdgeInsets.all(16.0),
-        child: Expanded(
-          child: Column(
-            children: [
-              // Level and question indicators
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    'السؤال ${state.currentQuestionIndex + 1} من 5',
-                    style: getMediumStyle(
-                        color: ColorManager.black500, fontSize: 16.sp),
-                  ),
-                  Text(
-                    currentLevel.levelTitle,
-                    style: getMediumStyle(
-                        color: ColorManager.black500, fontSize: 16.sp),
-                  ),
-                ],
-              ),
-          
-              // Progress indicators
-              Directionality(
-                textDirection: TextDirection.rtl,
-                child: Container(
-                  margin: const EdgeInsets.symmetric(vertical: 20),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: List.generate(
-                      5,
-                      (index) => Container(
-                        width: MediaQuery.of(context).size.width / 7,
-                        height: 16,
-                        margin: const EdgeInsets.symmetric(horizontal: 2),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(9),
-                          color: index <= state.currentQuestionIndex
-                              ? ColorManager.primary700
-                              : ColorManager.primary700,
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-          
-              const SizedBox(height: 40),
-          
-              // Question
-              Directionality(
-                textDirection: TextDirection.rtl,
-                child: Text(
-                  '${state.currentQuestionIndex + 1} - ${currentQuestion.question}',
-                  textAlign: TextAlign.start,
+        child: Column(
+          children: [
+            // Level and question indicators
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  'السؤال ${state.currentQuestionIndex + 1} من 5',
                   style: getMediumStyle(
-                    color: ColorManager.black500,
-                    fontSize: 22,
-                  ),
+                      color: ColorManager.black500, fontSize: 16.sp),
                 ),
-              ),
-          
-              SizedBox(height: 30.h),
-          
-              // Options
-              ...List.generate(
-                currentQuestion.options.length,
-                (index) => Padding(
-                  padding: const EdgeInsets.only(bottom: 16.0),
-                  child: InkWell(
-                    onTap: state.isAnswered
-                        ? null
-                        : () => context
-                            .read<QuizBloc>()
-                            .add(AnswerQuestion(optionIndex: index)),
-                    child: Container(
-                      width: double.infinity,
-                      padding: const EdgeInsets.symmetric(vertical: 12),
+                Text(
+                  currentLevel.levelTitle,
+                  style: getMediumStyle(
+                      color: ColorManager.black500, fontSize: 16.sp),
+                ),
+              ],
+            ),
+
+            // Progress indicators
+            Directionality(
+              textDirection: TextDirection.rtl,
+              child: Container(
+                margin: const EdgeInsets.symmetric(vertical: 20),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: List.generate(
+                    5,
+                    (index) => Container(
+                      width: MediaQuery.of(context).size.width / 7,
+                      height: 16,
+                      margin: const EdgeInsets.symmetric(horizontal: 2),
                       decoration: BoxDecoration(
-                        border: Border.all(
-                          color: state.isAnswered &&
-                                  state.selectedOptionIndex == index
-                              ? (state.isCorrect ?? false
-                                  ? Colors.green
-                                  : Colors.red)
-                              : Colors.grey.shade300,
-                          width: state.isAnswered &&
-                                  state.selectedOptionIndex == index
-                              ? 2.5
-                              : 1.5,
-                        ),
-                        borderRadius: BorderRadius.circular(8),
+                        borderRadius: BorderRadius.circular(9),
+                        color: index <= state.currentQuestionIndex
+                            ? ColorManager.primary700
+                            : ColorManager.primary700,
                       ),
-                      child: Text(currentQuestion.options[index],
-                          textAlign: TextAlign.center,
-                          style: getMediumStyle(
-                            color: ColorManager.black500,
-                          )),
                     ),
                   ),
                 ),
               ),
-          
-              const Spacer(),
-          
-              // Navigation buttons
-              Row(
-                children: [
-                  if (state.currentQuestionIndex > 0 ||
-                      state.currentLevelIndex > 0)
-                    Expanded(
-                      child: ElevatedButton(
-                        onPressed: () =>
-                            context.read<QuizBloc>().add(PreviousQuestion()),
-                        style: ElevatedButton.styleFrom(
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(8)),
-                          backgroundColor: ColorManager.white,
-                          side: BorderSide(color: ColorManager.primary700),
-                          padding: const EdgeInsets.symmetric(vertical: 12),
-                        ),
-                        child: Text(
-                          'السابق',
-                          style: getMediumStyle(color: ColorManager.black500),
-                        ),
+            ),
+
+            const SizedBox(height: 40),
+
+            // Question
+            Directionality(
+              textDirection: TextDirection.rtl,
+              child: Text(
+                '${state.currentQuestionIndex + 1} - ${currentQuestion.question}',
+                textAlign: TextAlign.start,
+                style: getMediumStyle(
+                  color: ColorManager.black500,
+                  fontSize: 22,
+                ),
+              ),
+            ),
+
+            SizedBox(height: 30.h),
+
+            // Options
+            ...List.generate(
+              currentQuestion.options.length,
+              (index) => Padding(
+                padding: const EdgeInsets.only(bottom: 16.0),
+                child: InkWell(
+                  onTap: state.isAnswered
+                      ? null
+                      : () => context
+                          .read<QuizBloc>()
+                          .add(AnswerQuestion(optionIndex: index)),
+                  child: Container(
+                    width: double.infinity,
+                    padding: const EdgeInsets.symmetric(vertical: 12),
+                    decoration: BoxDecoration(
+                      border: Border.all(
+                        color: state.isAnswered &&
+                                state.selectedOptionIndex == index
+                            ? (state.isCorrect ?? false
+                                ? Colors.green
+                                : Colors.red)
+                            : Colors.grey.shade300,
+                        width: state.isAnswered &&
+                                state.selectedOptionIndex == index
+                            ? 2.5
+                            : 1.5,
                       ),
+                      borderRadius: BorderRadius.circular(8),
                     ),
-                  if (state.currentQuestionIndex > 0 ||
-                      state.currentLevelIndex > 0)
-                    const SizedBox(width: 10),
+                    child: Text(currentQuestion.options[index],
+                        textAlign: TextAlign.center,
+                        style: getMediumStyle(
+                          color: ColorManager.black500,
+                        )),
+                  ),
+                ),
+              ),
+            ),
+
+            const Spacer(),
+
+            // Navigation buttons
+            Row(
+              children: [
+                if (state.currentQuestionIndex > 0 ||
+                    state.currentLevelIndex > 0)
                   Expanded(
                     child: ElevatedButton(
-                      onPressed: state.isAnswered
-                          ? () => context.read<QuizBloc>().add(NextQuestion())
-                          : null,
+                      onPressed: () =>
+                          context.read<QuizBloc>().add(PreviousQuestion()),
                       style: ElevatedButton.styleFrom(
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(8)),
-                        backgroundColor: ColorManager.primary700,
-                        foregroundColor: Colors.white,
+                        backgroundColor: ColorManager.white,
+                        side: BorderSide(color: ColorManager.primary700),
                         padding: const EdgeInsets.symmetric(vertical: 12),
                       ),
                       child: Text(
-                        'التالي',
-                        style: getMediumStyle(color: ColorManager.white),
+                        'السابق',
+                        style: getMediumStyle(color: ColorManager.black500),
                       ),
                     ),
                   ),
-                ],
-              ),
-            ],
-          ),
+                if (state.currentQuestionIndex > 0 ||
+                    state.currentLevelIndex > 0)
+                  const SizedBox(width: 10),
+                Expanded(
+                  child: ElevatedButton(
+                    onPressed: state.isAnswered
+                        ? () => context.read<QuizBloc>().add(NextQuestion())
+                        : null,
+                    style: ElevatedButton.styleFrom(
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(8)),
+                      backgroundColor: ColorManager.primary700,
+                      foregroundColor: Colors.white,
+                      padding: const EdgeInsets.symmetric(vertical: 12),
+                    ),
+                    child: Text(
+                      'التالي',
+                      style: getMediumStyle(color: ColorManager.white),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ],
         ),
       ),
     );

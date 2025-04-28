@@ -2,13 +2,8 @@ import 'package:courseapp/config/routes/routes.dart';
 import 'package:courseapp/features/auth/prestation/screens/confirn_change_password.dart';
 import 'package:courseapp/features/auth/prestation/screens/forget_passsword_screen.dart';
 import 'package:courseapp/features/auth/prestation/screens/login_screen.dart';
-
 import 'package:courseapp/features/auth/prestation/screens/repassword_screen.dart';
 import 'package:courseapp/features/auth/prestation/screens/signup_screen.dart';
-import 'package:courseapp/features/main/community/data/data_source/post_remote_data_source.dart';
-import 'package:courseapp/features/main/community/data/repos/post_repository_impl.dart';
-import 'package:courseapp/features/main/community/domain/usecases/add_post_usecase.dart';
-import 'package:courseapp/features/main/community/presentaion/manager/post_cubit.dart';
 import 'package:courseapp/features/main/community/presentaion/views/publish_posts_view.dart';
 import 'package:courseapp/features/main/cources/presentation/views/progress_view.dart';
 import 'package:courseapp/features/main/fathers/presentaion/views/full_articles_view.dart';
@@ -31,8 +26,6 @@ import 'package:courseapp/features/quiz/presentation/views/quiz_home.dart';
 import 'package:courseapp/features/quiz/presentation/views/splash_quiz.dart';
 import 'package:courseapp/features/splash/presentation/view/splash_view.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:supabase_flutter/supabase_flutter.dart';
 
 class RouteGenerator {
   static Route<dynamic> getRoute(RouteSettings settings) {
@@ -83,12 +76,8 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (_) => const ThankYouView());
       case Routes.publishPosts:
         return MaterialPageRoute(
-          builder: (_) => BlocProvider(
-              create: (context) => PostCubit(AddPostUseCase(PostRepositoryImpl(
-                  PostRemoteDataSource(Supabase.instance.client)))),
-              child: const PublishPostsView()),
+          builder: (_) => const PublishPostsView(),
         );
-
       case Routes.selectedPayment:
         final args = settings.arguments as PaymentOption;
         if (args is PaymentOption) {

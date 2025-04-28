@@ -1,42 +1,35 @@
-import 'package:equatable/equatable.dart';
-
-class PostModel extends Equatable {
+class Post {
   final String id;
-  final String userId;
+  final String userName;
   final String text;
-  final String imageUrl;
+  final String? imageUrl;
   final DateTime createdAt;
 
-  const PostModel({
+  Post({
     required this.id,
-    required this.userId,
+    required this.userName,
     required this.text,
-    this.imageUrl = '',
+    this.imageUrl,
     required this.createdAt,
   });
 
-  factory PostModel.fromJson(Map<String, dynamic> json) {
-    return PostModel(
-      id: json['id'] ?? '',
-      userId: json['user_id'] ?? '',
-      text: json['text'] ?? '',
-      imageUrl: json['image_url'] ?? '',
-      createdAt: json['created_at'] != null
-          ? DateTime.parse(json['created_at'])
-          : DateTime.now(),
+  factory Post.fromMap(Map<String, dynamic> map) {
+    return Post(
+      id: map['id'],
+      userName: map['userName'],
+      text: map['text'],
+      imageUrl: map['imageUrl'],
+      createdAt: DateTime.parse(map['createdAt']),
     );
   }
 
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toMap() {
     return {
       'id': id,
-      'user_id': userId,
+      'userName': userName,
       'text': text,
-      'image_url': imageUrl,
-      'created_at': createdAt.toIso8601String(),
+      'imageUrl': imageUrl,
+      'createdAt': createdAt.toIso8601String(),
     };
   }
-
-  @override
-  List<Object?> get props => [id, userId, text, imageUrl, createdAt];
 }
