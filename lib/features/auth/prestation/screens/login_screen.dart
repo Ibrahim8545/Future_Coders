@@ -8,6 +8,7 @@ import 'package:courseapp/features/auth/domain/use_case/signup_usecase.dart';
 import 'package:courseapp/features/auth/prestation/manager/cubit/signup_bloc_cubit.dart';
 import 'package:courseapp/features/auth/prestation/manager/cubit/signup_bloc_state.dart';
 import 'package:courseapp/features/auth/prestation/widget/custom_buttom.dart';
+import 'package:courseapp/features/auth/prestation/widget/custom_snack_bar_widget.dart';
 import 'package:courseapp/features/auth/prestation/widget/custom_textfield.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -38,18 +39,22 @@ class LoginPage extends StatelessWidget {
           listener: (context, state) {
             if (state is AuthSuccess) {
               Navigator.pushReplacementNamed(context, Routes.quiz);
-            }
-            else if (state is AuthError) {
+            } else if (state is AuthError) {
               showDialog(
                 context: context,
                 builder: (_) => AlertDialog(
                   title: Row(
                     children: [
-                       Text('Login Failed',style: getMediumStyle(color: ColorManager.black500)),
-                      Icon(Icons.error,color: ColorManager.red600,)
+                      Text('Login Failed',
+                          style: getMediumStyle(color: ColorManager.black500)),
+                      Icon(
+                        Icons.error,
+                        color: ColorManager.red600,
+                      )
                     ],
                   ),
-                  content:  Text("Invalid email or password",style: getMediumStyle(color: ColorManager.black500)),
+                  content: Text("خطأ في كلمه المرور او الايميل",
+                      style: getMediumStyle(color: ColorManager.black500)),
                 ),
               );
             }
@@ -106,36 +111,98 @@ class LoginPage extends StatelessWidget {
                     state is AuthLoading
                         ? const Center(child: CircularProgressIndicator())
                         : CustomButton(
-                      color: const Color(0xff0A638F),
-                      onTap: () async {
-                        if (formKey.currentState!.validate()) {
-                          final repository = AuthLoginRepositoryImpl(
-                            client: Supabase.instance.client,
-                          );
-                          final loginUseCase = LoginUseCase(repository);
+                            color: const Color(0xff0A638F),
+                            onTap: () async {
+                              if (formKey.currentState!.validate()) {
+                                final repository = AuthLoginRepositoryImpl(
+                                  client: Supabase.instance.client,
+                                );
+                                final loginUseCase = LoginUseCase(repository);
 
-                          try {
-                            final userId = await loginUseCase.execute(
-                              emailController.text.trim(),
-                              passwordController.text.trim(),
-                            );
-                            if (userId != null) {
-                              Navigator.pushReplacementNamed(
-                                  context, Routes.quiz);
-                            }
-                          } catch (e) {
-                            showDialog(
-                              context: context,
-                              builder: (_) => AlertDialog(
-                                title: Text('Login Failed'),
-                                content: Text(e.toString()),
-                              ),
-                            );
-                          }
-                        }
-                      },
-                      text: 'تسجيل الدخول ',
-                    ),
+                                try {
+                                  final userId = await loginUseCase.execute(
+                                    emailController.text.trim(),
+                                    passwordController.text.trim(),
+                                  );
+                                  if (userId != null) {
+                                    ScaffoldMessenger.of(context).showSnackBar(
+                                      const SnackBar(
+                                        content: Directionality(
+                                          textDirection: TextDirection.rtl,
+                                          child: SnackBarContentWidget(content: 'تم تسجيل الدخول بنجاح',),
+                                        ),
+                                      ),
+                                    );
+                                    Navigator.pushReplacementNamed(
+                                        context, Routes.quiz);
+                                  }
+                                } catch (e) {
+                                  showDialog(
+                                    context: context,
+                                    builder: (_) => AlertDialog(
+                                      title: Directionality(
+                                        textDirection: TextDirection.rtl,
+                                        child: Row(
+                                          children: [
+                                            Text('فشل تسجيل الدخول',
+                                                style: getMediumStyle(
+                                                  color: ColorManager.black500,
+                                                  fontSize: 25.sp,
+                                                )),
+                                            SizedBox(width: 10.w),
+                                            const Icon(
+                                              Icons.error,
+                                              color: Color(0xffDD3434),
+                                            )
+                                          ],
+                                        ),
+                                      ),
+                                      content: Text(
+                                          "خطأ في كلمه المرور او الايميل ",
+                                          style: getMediumStyle(
+                                              color: ColorManager.black500,
+                                              fontSize: 18.sp)),
+                                      actions: [
+                                        Directionality(
+                                          textDirection: TextDirection.rtl,
+                                          child: Row(
+                                            children: [
+                                              Expanded(
+                                                child: ElevatedButton(
+                                                  onPressed: () {
+                                                    Navigator.of(context).pop();
+                                                  },
+                                                  style:
+                                                      ElevatedButton.styleFrom(
+                                                          backgroundColor:
+                                                              const Color(
+                                                                  0xffDD3434),
+                                                          shape:
+                                                              RoundedRectangleBorder(
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        4),
+                                                          )),
+                                                  child: Text(
+                                                    "حسناً",
+                                                    style: getMediumStyle(
+                                                        color:
+                                                            ColorManager.white),
+                                                  ),
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        )
+                                      ],
+                                    ),
+                                  );
+                                }
+                              }
+                            },
+                            text: 'تسجيل الدخول ',
+                          ),
                     SizedBox(height: 16.h),
                     Row(
                       children: [
@@ -172,9 +239,7 @@ class LoginPage extends StatelessWidget {
                         ),
                         SizedBox(width: 32.w),
                         InkWell(
-                          onTap: () {
-                            // Apple Sign-In (not implemented in this example)
-                          },
+                          onTap: () {},
                           child: Image.asset('assets/images/apple.png'),
                         ),
                         SizedBox(width: 32.w),
@@ -218,3 +283,4 @@ class LoginPage extends StatelessWidget {
     );
   }
 }
+

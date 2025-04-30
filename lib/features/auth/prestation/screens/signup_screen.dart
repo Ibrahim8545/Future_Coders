@@ -6,6 +6,7 @@ import 'package:courseapp/features/auth/domain/use_case/signup_usecase.dart';
 import 'package:courseapp/features/auth/prestation/manager/cubit/signup_bloc_cubit.dart';
 import 'package:courseapp/features/auth/prestation/manager/cubit/signup_bloc_state.dart';
 import 'package:courseapp/features/auth/prestation/widget/custom_buttom.dart';
+import 'package:courseapp/features/auth/prestation/widget/custom_snack_bar_widget.dart';
 import 'package:courseapp/features/auth/prestation/widget/custom_textfield.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -39,7 +40,7 @@ class SignUpScreen extends StatelessWidget {
           listener: (context, state) {
             if (state is AuthSuccess) {
               ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(content: Text('تم إنشاء الحساب بنجاح')));
+                   const SnackBar(content: SnackBarContentWidget(content: 'تم إنشاء الحساب بنجاح',)));
               Navigator.pushNamed(context, Routes.signIn);
             }else if(state is AuthLoading){
               showDialog(context: context, builder: (context) {
