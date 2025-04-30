@@ -41,7 +41,17 @@ class SignUpScreen extends StatelessWidget {
               ScaffoldMessenger.of(context).showSnackBar(
                   const SnackBar(content: Text('تم إنشاء الحساب بنجاح')));
               Navigator.pushNamed(context, Routes.signIn);
-            } else if (state is AuthError) {
+            }else if(state is AuthLoading){
+              showDialog(context: context, builder: (context) {
+                return Row(
+                  children: [
+                    CircularProgressIndicator(color: ColorManager.primary700,),
+                    Text("Loading...",style: getMediumStyle(color: ColorManager.black500),)
+                  ],
+                );
+              },);
+            }
+            else if (state is AuthError) {
               ScaffoldMessenger.of(context)
                   .showSnackBar(SnackBar(content: Text(state.message)));
             }
@@ -63,7 +73,7 @@ class SignUpScreen extends StatelessWidget {
                       text: 'First Name must not be empty',
                       validator: (value) {
                         if (value == null || value.isEmpty) {
-                          return 'First Name must not be empty';
+                          return 'ادخل اسم الطالب';
                         }
                         return null;
                       },
@@ -75,11 +85,11 @@ class SignUpScreen extends StatelessWidget {
                       text: 'Email must not be empty',
                       validator: (value) {
                         if (value == null || value.isEmpty) {
-                          return 'Email must not be empty';
+                          return 'ادخل بريدك الالكتروني';
                         }
                         if (!RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$')
                             .hasMatch(value)) {
-                          return 'Please enter a valid email';
+                          return 'ادخل بريدك الالكتروني صالح';
                         }
                         return null;
                       },
@@ -92,10 +102,10 @@ class SignUpScreen extends StatelessWidget {
                       obscureText: true,
                       validator: (value) {
                         if (value == null || value.isEmpty) {
-                          return 'Password must not be empty';
+                          return 'ادخل كلمة المرور';
                         }
                         if (value.length < 6) {
-                          return 'Password should be at least 6 characters';
+                          return 'كلمه المرور لا يجب ان تقل عن 6 احرف';
                         }
                         return null;
                       },
@@ -108,10 +118,10 @@ class SignUpScreen extends StatelessWidget {
                       obscureText: true,
                       validator: (value) {
                         if (value == null || value.isEmpty) {
-                          return 'Please confirm your password';
+                          return 'تاكيد كلمة المرور';
                         }
                         if (value != passwordController.text) {
-                          return 'Passwords do not match';
+                          return 'كلمه المرور لا تتطابق';
                         }
                         return null;
                       },
@@ -162,7 +172,6 @@ class SignUpScreen extends StatelessWidget {
                       children: [
                         InkWell(
                           onTap: () {
-                            // Implement Google Sign-In
                             if (state is! AuthLoading) {
                               context.read<AuthCubit>().signInWithGoogle();
                             }
@@ -171,9 +180,7 @@ class SignUpScreen extends StatelessWidget {
                         ),
                         SizedBox(width: 32.w),
                         InkWell(
-                          onTap: () {
-                            // Implement Apple Sign-In (not included in this implementation)
-                          },
+                          onTap: () {},
                           child: Image.asset('assets/images/apple.png'),
                         ),
                         SizedBox(width: 32.w),
@@ -188,6 +195,7 @@ class SignUpScreen extends StatelessWidget {
                         ),
                       ],
                     ),
+                    const SizedBox(height: 15),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
@@ -206,7 +214,7 @@ class SignUpScreen extends StatelessWidget {
                           style: getBoldStyle(
                               color: ColorManager.black500, fontSize: 16),
                         ),
-                        const SizedBox(width: 10),
+                        const SizedBox(width: 20),
                       ],
                     ),
                   ],

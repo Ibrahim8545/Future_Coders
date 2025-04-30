@@ -31,6 +31,8 @@ class CustomTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      clipBehavior: Clip.none,
+      obscuringCharacter: "*",
       textDirection: TextDirection.rtl,
       maxLines: maxLines,
       obscureText: obscureText!,
@@ -38,10 +40,10 @@ class CustomTextField extends StatelessWidget {
       keyboardType: keyboardType,
       validator: validator,
       decoration: InputDecoration(
-        errorStyle: getMediumStyle(color: ColorManager.red600,fontSize: 12.sp),
+        errorStyle: getMediumStyle(color: ColorManager.red600,fontSize: 15.sp),
         hintTextDirection: TextDirection.rtl,
         hintText: hintText,
-        hintStyle: getMediumStyle(color: ColorManager.grey1, fontSize: 16.sp),
+        hintStyle: getMediumStyle(color: ColorManager.grey1, fontSize: 18.sp),
         prefixIcon: prefixIcon,
         suffixIcon: suffixIcon,
         label: Align(
@@ -49,25 +51,28 @@ class CustomTextField extends StatelessWidget {
           child: Text(
             '$hint',
             style:
-                getMediumStyle(color: ColorManager.black500, fontSize: 14.sp),
+                getMediumStyle(color: ColorManager.black500, fontSize: 18.sp),
           ),
         ),
-        labelStyle: const TextStyle(color: Color(0xff999999), fontSize: 16.0),
+        labelStyle: getMediumStyle(color: ColorManager.black500,fontSize:16.sp ),
         border: OutlineInputBorder(
+          gapPadding: 0,
           borderSide: BorderSide(
             color: ColorManager.primary700,
-            width: 2
+            width: 2.3
           )
         ),
         enabledBorder: const OutlineInputBorder(
+          gapPadding: 0,
           borderSide: BorderSide(
-            width: 2,
+            width: 2.3,
             color: Color(0xff0A638F),
           ),
         ),
         focusedBorder: const OutlineInputBorder(
+          gapPadding: 0,
           borderSide: BorderSide(
-            width: 2,
+            width: 2.3,
             strokeAlign: BorderSide.strokeAlignCenter,
             color: Color(0xff0A638F),
           ),

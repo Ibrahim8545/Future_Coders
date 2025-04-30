@@ -28,23 +28,19 @@ class AuthCubit extends Cubit<AppAuthState> {
         password: password,
         confirmPassword: confirmPassword,
       );
-      await fetchUsername();
       emit(AuthSuccess());
     } catch (e) {
       emit(AuthError(e.toString()));
     }
   }
 
-  // Add Google Sign-In Method
+
   Future<void> signInWithGoogle() async {
     emit(AuthLoading());
     try {
       final user = await authRepository.signInWithGoogle();
 
-      // For web or scenarios where we need to wait for redirect
       if (user == null) {
-        // In these cases, we're just initiating the OAuth flow
-        // The app will be redirected and come back with auth state
         return;
       }
 
@@ -55,16 +51,12 @@ class AuthCubit extends Cubit<AppAuthState> {
     }
   }
 
-  // Add Facebook Sign-In Method
+
   Future<void> signInWithFacebook() async {
     emit(AuthLoading());
     try {
       final user = await authRepository.signInWithFacebook();
-
-      // For web or scenarios where we need to wait for redirect
       if (user == null) {
-        // In these cases, we're just initiating the OAuth flow
-        // The app will be redirected and come back with auth state
         return;
       }
 
@@ -75,7 +67,7 @@ class AuthCubit extends Cubit<AppAuthState> {
     }
   }
 
-  // Your existing methods
+
   Future<void> fetchUsername() async {
     final userId = Supabase.instance.client.auth.currentUser?.id;
 
@@ -87,8 +79,6 @@ class AuthCubit extends Cubit<AppAuthState> {
 
     try {
       print("Attempting to fetch username for user ID: $userId");
-
-      // For social logins, the user data might be in metadata
       final userMetadata = Supabase.instance.client.auth.currentUser?.userMetadata;
       String? nameFromMetadata;
 
@@ -103,7 +93,6 @@ class AuthCubit extends Cubit<AppAuthState> {
         currentUsername = nameFromMetadata;
         print("Username from metadata: $currentUsername");
 
-        // Store in users table if not already there
         try {
           await Supabase.instance.client.from('users').upsert({
             'id': userId,

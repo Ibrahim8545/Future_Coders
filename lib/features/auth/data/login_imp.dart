@@ -17,7 +17,7 @@ class AuthLoginRepositoryImpl implements AuthRepository {
     } on AuthException catch (e) {
       return Future.error(e.message);
     } catch (e) {
-      return Future.error("Unknown error");
+      return Future.error("user not found");
     }
   }
 }

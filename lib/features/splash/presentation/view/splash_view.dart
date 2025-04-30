@@ -42,6 +42,7 @@ class _SplashViewState extends State<SplashView> with TickerProviderStateMixin {
     vsync: this,
   )..repeat(
       reverse: true,
+    count: 2
     );
   late final Animation<Offset> _offsetAnimation = Tween<Offset>(
     begin: Offset.zero,

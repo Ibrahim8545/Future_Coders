@@ -40,14 +40,12 @@ class AuthRepositoryImpl implements SignUPAuthRepo {
   @override
   Future<User?> signInWithGoogle() async {
     try {
-      // On web, we need to use a popup approach
       if (kIsWeb) {
         final response = await client.auth.signInWithOAuth(
           OAuthProvider.google,
           redirectTo: '${Uri.base.origin}/auth/callback',
         );
 
-        // On web, we might not get the user right away due to redirects
         return null;
       } else {
         // On mobile, we can use the native approach
@@ -67,23 +65,19 @@ class AuthRepositoryImpl implements SignUPAuthRepo {
   @override
   Future<User?> signInWithFacebook() async {
     try {
-      // On web, we need to use a popup approach
       if (kIsWeb) {
         final response = await client.auth.signInWithOAuth(
           OAuthProvider.facebook,
           redirectTo: '${Uri.base.origin}/auth/callback',
         );
 
-        // On web, we might not get the user right away due to redirects
         return null;
       } else {
-        // On mobile, we can use the native approach
         final response = await client.auth.signInWithOAuth(
           OAuthProvider.facebook,
           redirectTo: 'io.supabase.courseapp://login-callback/',
         );
 
-        // This will be non-null only in certain scenarios where auth completes in-app
         return client.auth.currentUser;
       }
     } catch (e) {
@@ -91,7 +85,6 @@ class AuthRepositoryImpl implements SignUPAuthRepo {
     }
   }
 
-  // Keep your existing methods...
   Future<String?> signInWithEmail(String email, String password) async {
     try {
       final response = await client.auth.signInWithPassword(

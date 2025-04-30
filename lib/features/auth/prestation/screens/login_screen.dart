@@ -38,12 +38,18 @@ class LoginPage extends StatelessWidget {
           listener: (context, state) {
             if (state is AuthSuccess) {
               Navigator.pushReplacementNamed(context, Routes.quiz);
-            } else if (state is AuthError) {
+            }
+            else if (state is AuthError) {
               showDialog(
                 context: context,
                 builder: (_) => AlertDialog(
-                  title: Text('Login Failed'),
-                  content: Text(state.message),
+                  title: Row(
+                    children: [
+                       Text('Login Failed',style: getMediumStyle(color: ColorManager.black500)),
+                      Icon(Icons.error,color: ColorManager.red600,)
+                    ],
+                  ),
+                  content:  Text("Invalid email or password",style: getMediumStyle(color: ColorManager.black500)),
                 ),
               );
             }
@@ -158,7 +164,6 @@ class LoginPage extends StatelessWidget {
                       children: [
                         InkWell(
                           onTap: () {
-                            // Implement Google Sign-In
                             if (state is! AuthLoading) {
                               context.read<AuthCubit>().signInWithGoogle();
                             }
@@ -175,7 +180,6 @@ class LoginPage extends StatelessWidget {
                         SizedBox(width: 32.w),
                         InkWell(
                           onTap: () {
-                            // Implement Facebook Sign-In
                             if (state is! AuthLoading) {
                               context.read<AuthCubit>().signInWithFacebook();
                             }
